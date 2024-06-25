@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    min-height: 100vh;
+    background: #EEEEEE 0% 0% no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar Css  */
+
+nav{
+    width: auto;
+    height: 65px;
+    border: 1px solid black;
+    background: #25313F 0% 0% no-repeat padding-box;
+    opacity: 1;
+    position: relative;
+}
+
+.wave {
+    width: auto;
+    height: 65px;
+    background: transparent url('https://static.vecteezy.com/system/resources/previews/009/843/817/non_2x/abstract-gray-gradient-wave-shape-layers-background-with-white-stripes-lines-pattern-texture-modern-and-minimal-round-curve-design-simple-flat-banner-design-with-copy-space-illustration-vector.jpg');
+    mix-blend-mode: overlay;
+    opacity: 0.3;
+}
+
+nav > img{
+    position: absolute;
+    top: 6px;
+    width: 208px;
+    height : 50px;
+}
+
+/* Footer Css */
+
+footer{
+    width: 100%;
+    height: 90px;
+    display: flex;
+    bottom: 0;
+    flex-direction: column;
+    margin-top: auto;
+    color: #616161;
+    justify-content: center;
+    align-items: center;
+}
+
+footer > .row-1{
+    width: 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font:14px Quicksand;
+    font-weight: 500;
+    letter-spacing: 0px;
+    color: #1F7A54;
+    opacity: 1;
+}
+
+footer > .row-2{
+    width: 100%;
+    height: 30px;
+    background: #E0E1E1 0% 0% no-repeat padding-box;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+footer > .row-2 > img {
+    width: 170px;
+    height : 35px;
+}
+
+footer > .row-2 > p {
+    font: 12 Quicksand;
+    font-weight: 500;
+    letter-spacing: 0px;
+    color: #616161;
+    opacity: 1;
+    margin-left: 40px;
+}
+.line{
+    color: #0505051f; 
+    font-size: 20px;
+}
+
+/* Main Form Css */
+
+main{
+    flex: 1;
+}
+.form{
+    width: min(calc(100% - 6em) , 488px);
+    height: min-content;
+    padding:2%;
+    margin: auto;
+    border-radius: 2px;
+    border-top: 5px solid #3AC7EC;
+    background-color: #fff;
+    margin-top: min(calc(80% - 100px) , 40px);
+}
+
+.head{
+    padding-top: 4%;
+    width: 100%;
+    display: grid;
+    grid-template-areas: "i h";
+    flex-direction: row;
+
+}
+
+h3{
+    font: 24px Quicksand;
+    font-weight: 600;
+    letter-spacing: 0px;
+    color: #222222;
+    opacity: 1;
+    grid-area: h;
+}
+
+.icon{
+    padding-left: 15%;
+    color: #1F7A54;
+    grid-area: i;
+    padding-top: 3px;
+    justify-self: flex-start;
+}
+
+.r-buttons{
+    padding-left: 6%;
+    padding-top: 3%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 32px;
+}
+
+.radio-btn{
+    display: flex;
+    flex-direction: row;
+    margin-right:30px;
+    justify-content: flex-start;
+    flex: 0.5;
+}
+
+.schoolrbtn{
+    flex : 1;
+}
+
+input[type='radio'] {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 24px;
+    border-radius: 50%;
+    outline: none;
+    border:1px solid  #1F7A54;
+    margin-top: 10px;
+}
+
+input[type='radio']:before {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 60%;
+    margin: 21% auto;
+    border-radius: 50%;
+}
+
+
+input[type="radio"]:checked:before {
+    background: green;
+    
+}
+
+input[type="radio"]:checked {
+  border-color:green;
+}
+
+.r-buttons label{
+    padding-top: 12px;
+    font:16px Quicksand;
+    font-weight: 600;
+    letter-spacing: 0px;
+    color: #333333;
+    opacity: 1;
+    padding-left: 5%;
+
+}
+
+.state{
+    display: flex;
+    flex-direction: column;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 5%;
+    font: normal 12px Quicksand;
+    letter-spacing: 0px;
+    color: #666666;
+    opacity: 1;
+}
+
+select {
+    border: 1px solid #EEEEEE;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    font: 16px Quicksand;
+    font-weight: 580;
+    text-indent: 0px;
+    padding-top: 1.5%;
+}
+
+.username {
+    display: flex;
+    flex-direction: column;
+    padding-left: 6%;
+    padding-top: 7%;
+    margin-right: 6%;
+}
+
+.pass{
+    width: 100%;
+}
+
+.eye{
+    color: #1F7A54;
+    text-align: right;
+    transform: translateY(-30px);
+}
+
+input[type='text'] , input[type='password']{
+    border: none;
+    border-bottom: 1px solid #EEEEEE;
+    font: 20px Quicksand;
+    letter-spacing: 0px;
+    color: #222;
+    opacity: 1
+}
+
+input[type='text']::placeholder , input[type='password']::placeholder{
+    border: none;
+    border-bottom: 1px solid #EEEEEE;
+    font: 16px Quicksand;
+    letter-spacing: 0px;
+    color: #666;
+    opacity: 1
+}
+
+
+.fp{
+    padding-top: 0.3%;
+    text-align: right;
+    font: 14px Quicksand;
+    font-weight: 580;
+    letter-spacing: 0px;
+    color: #1F7A54;
+    text-transform: uppercase;
+    opacity: 1;
+}
+
+input[type='text']:focus , input[type='password']:focus{
+    outline: none;
+}
+
+
+.checkbox{
+    padding-left: 6%;
+    margin-top: 2%;
+    font: 16px Quicksand;
+    font-weight: 550;
+    letter-spacing: 0px;
+    color: #222222;
+    opacity: 1
+}
+
+.btn{
+    width: 216px;
+    display: block;
+    border: none;
+    margin: 4% auto;
+    height: 40px;
+    background: #3FD28B 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 5px #0000003D;
+    font: 14px Quicksand;
+    font-weight: 500;
+    color: #1F2834;
+    padding: 0.5%;
+    border-radius: 5px;
+}
+
+
+@media screen and (max-width: 525px) {
+    footer .row-2 img {
+        width: 140px;
+        padding-right: 10px;
+    }
+
+    .footer .row-2{
+        font-size: 10px;
+    }
+
+    .footer .row-1{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    footer .row-1{
+        font-size: 15px;
+    }
+
+    
+    .footer .row-2{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    footer .row-1{
+        font-size: 16px;
+    }
+
+    footer .row-2{
+        font-size: 10px;
+        height: 40px;
+        margin-top: 5px;
+    }
+
+    .footer{
+        height: 70px;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    .foot-text{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        justify-content: center;
+    }
+}

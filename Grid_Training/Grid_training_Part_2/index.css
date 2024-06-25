@@ -1,0 +1,61 @@
+*{
+    margin : 0;
+    padding : 0;
+    color: white;
+}
+
+.container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  margin: 5px 5px 0 5px;
+}
+
+.container{
+    width: 100%;
+    height: calc(100vh - 16px);
+    display: grid;
+    grid-template-rows: repeat(6 , 1fr);
+    grid-template-columns: repeat(7 , 1fr);
+    grid-template-areas: "h h h h h h h"
+                         "m c c c c c c"
+                         "m c c c c c c"
+                         "m d d d e e e"
+                         "m d d d e e e"
+                         "f f f f f f f";
+    gap:2px;
+    
+}
+
+.header{
+    grid-area: h;
+    background: linear-gradient(to right , #4a389b , #907de3);
+
+}
+
+.sidebar {
+    grid-area: m;
+    background: linear-gradient(to bottom , #3bc0b9 , #229a93);
+}
+
+.content1{
+    grid-area: c;
+    background: linear-gradient(to right bottom , #5a53d1 ,#1c91a3);
+}
+
+.content2{
+    grid-area: d;
+    background: linear-gradient(to right bottom , #5a53d1 ,#1c91a3);
+}
+
+.content3{
+    grid-area: e;
+    background: linear-gradient(to right bottom , #5a53d1 ,#1c91a3);
+}
+
+.footer{
+    grid-area: f;
+    background: linear-gradient(to right , #4a389b , #907de3);
+
+}

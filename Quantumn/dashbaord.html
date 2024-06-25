@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <nav>
+        <div class="wave">
+        </div>
+        <div class="content">
+            <div class="img">
+                <img src="https://www.zeuslearning.com/c/img/quantum/laptop-1366/Quantum%20Logo.svg" alt="">
+            </div>
+            <div class="link">
+                <span class="link-tags">    
+                    <a class="active" href="#" onclick="dash_link(event)" >DASHBOARD</a>
+                    <a href="#" href="#" onclick="dash_cont(event)">CONTENT</a>
+                    <a href="#" onclick="dash_user(event)">USERS</a>
+                    <a href="#" onclick="dash_rep(event)">REPORTS</a>
+                    <a href="#" onclick="dash_admin(event)">ADMIN</a>
+                </span>
+                <span class="material-symbols-outlined icon menu-icons">
+                    notifications
+                </span>
+                <span class="material-symbols-outlined icon menu-icons">
+                    campaign
+                </span>
+                <span class="imge"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" srcset=""></span>
+                <span class="material-symbols-outlined menubar menu-icons" onclick="SideBar()">
+                    menu
+                </span>
+            </div>
+        </div>
+        <div class="sidebar" data-state="closed">
+            <div class="links">
+                <a class="actives" href="#">DASHBOARD</a>
+                <ul class="underline"></ul>
+                <a href="#">CONTENT</a>
+                <a href="#">USERS</a>
+                <a href="#">REPORTS</a>
+                <a href="#">ADMIN</a>
+            </div>
+    </nav>
+
+    <section class="main-container">
+        <div class="header">
+            <span class="row-items active-class">
+                <span class="material-symbols-outlined">
+                    book
+                </span>
+                <span class="number">4</span> 
+                    Courses
+            </span>
+            <span class="row-items">
+                <span class="material-symbols-outlined">
+                    group
+                </span>
+                    <span class="number">4</span> Classes
+            </span>
+        </div>
+        <div class="sorting">
+            <p>Sort By:</p>
+
+            <select name="courses">
+                <option selected disabled>Course Name</option>
+                <option value="Phsiscs">Physics</option>
+                <option value="science">Science</option>
+            </select>
+
+            <span class="material-symbols-outlined up-arrow">
+                north
+            </span>
+        </div>
+
+        <span class="card-text num-opt">Showing 4 of 4 courses</span>
+
+        <hr class="h-line">
+
+        <div class="cards">
+            <div class="card">
+                <div class="card-content">
+                    <div class="img">
+                        <img src="./Images/imageMask.png" alt="">
+                    </div>
+                    <div class="text">
+                        <span class="heading"><p class="line-clamping"> Acceleration </p><span class="starimg">
+                            <img src="./Icons/favourite.svg" alt=""></span>
+                        </span>
+                        <span class="card-text">Physics | Grade 7 <span class="card-text-numb">+2</span></span>
+                        <span class="card-text"><span class="card-text numb">4</span>Units <span class="card-text numb">18</span>Lesson <span class="card-text numb">24</span>Topics</span>
+                        <select name="porf" class="prof">
+                            <option value="" selected>Mr. Frank's Class B</option>
+                        </select>
+                        <span class="stud"><span class="studleft">50 students</span>|<span class="date">21-Jan-2020 - 21-Aug-2020</span></span>
+                    </div>
+                </div>
+
+                <hr class="down-line">
+                <div class="icons">
+                        <span><img src="./Icons/preview.svg" alt="" srcset=""></span>
+                        <span><img src="./Icons/manage course.svg" alt=""></span>
+                        <span> <img src="./Icons/grade submissions.svg" alt=""></span>
+                        <span> <img src="./Icons/reports.svg" alt="" srcset=""></span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="img">
+                        <img src="./Images/imageMask-1.png" alt="">
+                    </div>
+                    <div class="text">
+                        <span class="heading"><p class="line-clamping">Displacement , Velocity and Speed </p><span class="starimg">
+                            <img src="./Icons/favourite.svg" alt=""></span>
+                        </span>
+                        <span class="card-text">Physics | Grade 7 <span class="card-text-numb">+2</span></span>
+                        <span class="card-text"><span class="card-text numb">4</span>Units <span class="card-text numb">18</span>Lesson <span class="card-text numb">24</span>Topics</span>
+                        <select name="porf" class="prof">
+                            <option value="" selected disabled>No Classes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <hr class="down-line">
+                <div class="icons">
+                        <span><img src="./Icons/preview.svg" alt="" srcset=""></span>
+                        <span><img class="icon-fade" src="./Icons/manage course.svg" alt=""></span>
+                        <span> <img class="icon-fade" src="./Icons/grade submissions.svg" alt=""></span>
+                        <span> <img src="./Icons/reports.svg" alt="" srcset=""></span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-content">
+                    <div class="img">
+                        <img src="./Images/imageMask-2.png" alt="">
+                    </div>
+                    <div class="text">
+                        <span class="heading"><p class="line-clamping">Introduction to Biology: Microo organism and how they can affect the other Life Systems</p><span class="starimg">
+                            <img src="./Icons/favourite.svg" alt=""></span>
+                        </span>
+                        <span class="card-text">Physics | Grade 7 <span class="card-text-numb">+2</span></span>
+                        <span class="card-text"><span class="card-text numb">4</span>Units <span class="card-text numb">18</span>Lesson <span class="card-text numb">24</span>Topics</span>
+                        <select name="porf" class="prof">
+                            <option value="" selected>Mr. Frank's Class B</option>
+                        </select>
+                        <span class="stud">500 students</span>
+                    </div>
+                </div>
+
+                <hr class="down-line">
+                <div class="icons">
+                        <span><img src="./Icons/preview.svg" alt="" srcset=""></span>
+                        <span><img class="icon-fade" src="./Icons/manage course.svg" alt=""></span>
+                        <span> <img class="icon-fade" src="./Icons/grade submissions.svg" alt=""></span>
+                        <span> <img src="./Icons/reports.svg" alt="" srcset=""></span>
+                </div>
+            </div>
+
+            <div class="card" data-state="expired">
+                <div class="card-content">
+                    <div class="img">
+                        <img src="./Images/imageMask-3.png" alt="">
+                    </div>
+                    <div class="text">
+                        <span class="heading"><p class="line-clamping">Introduction to High School Mathematics </p><span class="starimg grayed">
+                            <img src="./Icons/favourite.svg" alt=""></span>
+                        </span>
+                        <span class="card-text">Physics | Grade 7 <span class="card-text-numb">+2</span></span>
+                        <span class="card-text"><span class="card-text numb">4</span>Units <span class="card-text numb">18</span>Lesson <span class="card-text numb">24</span>Topics</span>
+                        <select name="porf" class="prof">
+                            <option value="" selected>Mr. Frank's Class B</option>
+                        </select>
+                        <span class="stud"><span class="studleft">50 students</span> | <span class="date">14-Oct-2019 - 20-Oct-2019</span></span>
+                    </div>
+                </div>
+
+                <hr class="down-line">
+                <div class="icons">
+                        <span><img src="./Icons/preview.svg" alt="" srcset=""></span>
+                        <span><img src="./Icons/manage course.svg" alt=""></span>
+                        <span> <img src="./Icons/grade submissions.svg" alt=""></span>
+                        <span> <img src="./Icons/reports.svg" alt="" srcset=""></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="row-1">
+            <p>About</p>
+            <p style="color: #0505051f; font-size: 20px;">|</p>
+            <p>Contact Us</p>
+        </div>
+        <div class="row-2">
+            <img src="./Icons/logo_footer.svg" alt="">
+            <div class="foot-text"><span>Copyright &#169;</span><span>2020-2021 Zeus Systems Pvt. Ltd.</span> <span>All rights reserved</span></div>
+        </div>
+    </footer>
+</body>
+<script src="./dash.js"></script>
+</html>
