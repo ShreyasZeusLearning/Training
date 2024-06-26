@@ -1,9 +1,11 @@
-const sidebar = document.querySelector(".sidebar")
-
+const sidebar = document.querySelector(".sidebar");
+const down_arrow = document.getElementById("menu-down");
 function SideBar() {
     console.log("Hello");
     console.log(sidebar)
+    console.log(down_arrow)
     sidebar.dataset["state"] = sidebar.dataset["state"] == "open" ? "closed" : "open";
+    down_arrow.dataset["states"] = down_arrow.dataset["states"] == "open" ? "closed" : "open";
 }
 
 
