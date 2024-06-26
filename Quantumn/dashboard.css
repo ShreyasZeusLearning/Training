@@ -16,8 +16,10 @@ nav{
     width: auto;
     height: 65px;
     border: 1px solid black;
-    background: #25313F 0% 0% no-repeat padding-box;
-    opacity: 1;
+    background: url('./Images/wave.png') #25313F;
+    background-size: auto;
+    background-blend-mode: overlay;
+    opacity: 0.9;
     position: sticky;
     top: 0;
     z-index: 1;
@@ -26,9 +28,8 @@ nav{
 .wave {
     width: auto;
     height: 65px;
-    background: transparent url('https://static.vecteezy.com/system/resources/previews/009/843/817/non_2x/abstract-gray-gradient-wave-shape-layers-background-with-white-stripes-lines-pattern-texture-modern-and-minimal-round-curve-design-simple-flat-banner-design-with-copy-space-illustration-vector.jpg');
-    mix-blend-mode: overlay;
-    opacity: 0.3;
+    /* background:  */
+    opacity: 1;
 }
 
 nav > .content > .img > img{
@@ -62,10 +63,10 @@ nav > .content > .img > img{
     width: 45px;
     height: 45px;
     margin-top: 6px;
-    padding: 0 20px;
+    padding: 0 15px 0 15px;
 }
 
-.link span{
+.link span:not(.menubar){
     display: flex;
     flex-direction: row;
 }
@@ -218,6 +219,9 @@ footer > .row-2 > p {
     opacity: 1;
     margin-left: 40px;
 }
+.company{
+    font-weight: bolder;
+}
 
 .sidebar[data-state="closed"]{
     width: 0px;
@@ -268,7 +272,7 @@ footer > .row-2 > p {
 
 .starimg img{
     width: 20px;
-    height: 24px;
+    height: 20px;
     margin-left: auto;
 }
 
@@ -430,7 +434,7 @@ select:focus , select:focus-visible{
 }
 
 .menu-icons{
-    color: #3FD28B; padding: 0 20px; font-size: 40px; margin-top: 7px;
+    color: #3FD28B; padding: 0 20px; font-size: 35px; margin-top: 10px;
 }
 
 .card-text{
@@ -454,6 +458,10 @@ select:focus , select:focus-visible{
     margin-right: 5px;
 }
 
+.link-tags{
+    padding: 0 0 0 25px;
+}
+
 .prof{
     width: 80%;
     border: none;
@@ -464,6 +472,10 @@ select:focus , select:focus-visible{
     color: #222222;
     font-weight: 600;
     margin: 10px 0 0 0;
+    appearance: none;
+    background: url(./Icons/arrow-down.svg);
+    background-repeat: no-repeat;
+    background-position: 100%;
 }
 
 .stud{
@@ -497,7 +509,7 @@ select:focus , select:focus-visible{
 }
 
 .menubar{
-    visibility: hidden;
+    display: none;
 }
 
 
@@ -514,13 +526,20 @@ select:focus , select:focus-visible{
     margin-top: 20px;
 }
 
+.foot-text{
+    margin-left: 20px;
+}
+
+.footer-bar{
+    font-size: 30px;
+}
 @media screen and (max-width: 1100px) {
     nav .link a{
         display: none;
     }
 
     .menubar{
-        visibility: visible;
+        display: block;
     }
 
     
