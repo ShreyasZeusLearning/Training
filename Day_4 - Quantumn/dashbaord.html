@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />    <title>Dashboard</title>
     <link rel="stylesheet" href="./styles/dashboard/dashboard.css">
+     <!-- <link rel="stylesheet" href="old_dashboard.css"> -->
 </head>
 <body>
     <nav>
@@ -22,29 +23,50 @@
                     <a href="#" onclick="dash_rep(event)">REPORTS</a>
                     <a href="#" onclick="dash_admin(event)">ADMIN</a>
                 </span>
-                <span class="material-symbols-outlined icon menu-icons">
-                    notifications
+                <span class="icon" onclick="alertData()" onmouseover="menuHovers()" onmouseleave="menuLeaves()"> <img class="icon  menu-img " src="./Icons/alerts.svg" alt="" srcset="">
                 </span>
-                <span class="material-symbols-outlined icon menu-icons">
-                    campaign
+                <span class="icon"> <img class="icon menu-img" src="./Icons/announcements.svg" alt="" srcset="">
                 </span>
                 <span class="imge"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="" srcset=""></span>
-                <span class="material-symbols-outlined menubar menu-icons" onclick="SideBar()">
+                <span class="material-symbols-outlined menubar menu-icons" onmouseover="menuHover()" onmouseleave="menuLeave()" onclick="SideBar()">
                     menu
                 </span>
             </div>
         </div>
         <div class="sidebar" data-state="closed">
             <ul class="links">
-                <li class="actives" href="#">DASHBOARD
-                    <img data-states="closed" id="menu-down" src="./../../Icons/arrow-down.svg" alt="">
+                <li href="#">DASHBOARD
                 </li>
-                <ul class="underline"></ul>
-                <li href="#">CONTENT</li>
-                <li href="#">USERS</li>
-                <li href="#">REPORTS</li>
-                <li href="#">ADMIN</li>
-        </ul>
+                <li class="droplinks" href="#" onclick="dropdown(1)">CONTENT
+                    <div class="arrow-div"></div>
+                    <!-- <img data-states="closed" onclick="dropdown(1)" class="menu-down" src="./../../Icons/arrow-down.svg" alt=""> -->
+                </li>
+                <li class="droplinks" href="#" onclick="dropdown(2)">USERS
+                    <div class="arrow-div"></div>
+                    <!-- <img data-states="closed" class="menu-down" src="./../../Icons/arrow-down.svg" alt=""> -->
+                </li>
+                <li class="droplinks" href="#" onclick="dropdown(3)">REPORTS
+                    <div class="arrow-div"></div>
+                    <!-- <img data-states="closed" class="menu-down" src="./../../Icons/arrow-down.svg" alt=""> -->
+                </li>
+                <li class="droplinks" href="#" onclick="dropdown(4)">ADMIN
+                    <div class="arrow-div"></div>
+                    <!-- <img data-states="closed" class="menu-down" src="./../../Icons/arrow-down.svg" alt=""> -->
+                </li>
+            </ul>
+        </div>
+
+        <div class="alertbox" data-alert="closed">
+            <div class="msg">
+                <span class="alrtmsg">License for Introduction to Algebra has been assigned to your school
+                    <span class="alrtimg"> <img src="./Icons/dnd.svg" alt="" srcset=""></span>
+                </span>
+                <div class="alrttime">
+                    15-Sept-2018 at 7:21 pm
+                </div>
+            </div>
+            <button class="alertbtn" type="submit">Show All</button>
+        </div>
     </nav>
 
     <section class="main-container">
@@ -82,7 +104,7 @@
         <hr class="h-line">
 
         <div class="cards">
-            <div class="card">
+            <!-- <div class="card">
                 <div class="card-content">
                     <div class="img">
                         <img src="./Images/imageMask.png" alt="">
@@ -92,7 +114,7 @@
                             <img src="./Icons/favourite.svg" alt=""></span>
                         </span>
                         <span class="card-text">Physics | Grade 7 <span class="card-text-numb">+2</span></span>
-                        <span class="card-text"><span class="card-text numb">4</span>Units <span class="card-text numb">18</span>Lesson <span class="card-text numb">24</span>Topics</span>
+                        <span class="card-text"><b class="card-text numb">4</b>Units <b class="card-text numb">18</b>Lesson <b class="card-text numb">24</b>Topics</span>
                         <select name="porf" class="prof">
                             <option value="" selected>Mr. Frank's Class B</option>
                         </select>
@@ -172,7 +194,6 @@
                             <img src="./Icons/favourite.svg" alt=""></span>
                         </span>
                         <span class="card-text">Physics | Grade 7 <span class="card-text-numb">+2</span></span>
-                        <span class="card-text"><span class="card-text numb">4</span>Units <span class="card-text numb">18</span>Lesson <span class="card-text numb">24</span>Topics</span>
                         <select name="porf" class="prof">
                             <option value="" selected>Mr. Frank's Class B</option>
                         </select>
@@ -187,7 +208,41 @@
                         <span> <img src="./Icons/grade submissions.svg" alt=""></span>
                         <span> <img src="./Icons/reports.svg" alt="" srcset=""></span>
                 </div>
+            </div> -->
+            
+        <template id="card-demo" data-state="expired">
+            <div class="card">
+                <div class="card-content">
+                    <div class="img">
+                        <img src="" alt="">
+                    </div>
+                    <div class="text">
+                        <span class="heading">
+                        <p class="line-clamping"> </p><span class="starimg">
+                            <img src="./Icons/favourite.svg" alt=""></span>
+                        </span>
+                        <span class="card-text subject"><span class="card-text-numb"></span></span>
+                        <span class="card-text ult">
+                        <span class="unit numb"><span class="card-text unumb"></span></span> 
+                        <span class="lesson numb"><span class="card-text uless"></span></span>
+                        <span class="topic numb"><span class="card-text utop"></span></span>
+                        </span>
+            
+                        <select name="porf" id="selected" class="prof">
+                        </select>
+                        <span class="stud"><span class="studleft"></span><span class="date"></span></span>
+                    </div>
+                </div>
+                
+                <hr class="down-line">
+                <div class="icons">
+                        <span><img src="./Icons/preview.svg" alt="" srcset=""></span>
+                        <span><img src="./Icons/manage course.svg" alt=""></span>
+                        <span> <img src="./Icons/grade submissions.svg" alt=""></span>
+                        <span> <img src="./Icons/reports.svg" alt="" srcset=""></span>
+                </div>
             </div>
+        </template>
         </div>
     </section>
 
@@ -204,4 +259,7 @@
     </footer>
 </body>
 <script src="./dash.js"></script>
+<script src="./alert.js"></script>
+
+<script type="module" src="./cards.js"></script>
 </html>

@@ -1,13 +1,73 @@
 const sidebar = document.querySelector(".sidebar");
-const down_arrow = document.getElementById("menu-down");
+const down_arrow = document.querySelectorAll(".menu-down");
 function SideBar() {
-    console.log("Hello");
-    console.log(sidebar)
-    console.log(down_arrow)
-    sidebar.dataset["state"] = sidebar.dataset["state"] == "open" ? "closed" : "open";
-    down_arrow.dataset["states"] = down_arrow.dataset["states"] == "open" ? "closed" : "open";
+    sidebar.dataset["state"] = sidebar.dataset["state"] == "clicked" ? "closed" : "clicked";
 }
 
+function menuHover(){
+  if(sidebar.dataset["state"] != "clicked"){
+    sidebar.dataset["state"] = "open";
+  }
+}
+
+function menuLeave(){
+  if(sidebar.dataset["state"] != "clicked"){
+    sidebar.dataset["state"] = "closed"
+  }
+}
+
+const navContent = [
+  ["Course Catalog"],
+  ["Profile" , "Progress"],
+  ["Grade" , "Semester"],
+  ["Profile" , "Students"]
+]
+
+const list = document.querySelectorAll(".droplinks");
+
+function start(ul){
+  ul.style.width = "0px";
+  ul.style.height = "0px";
+  ul.style.opacity = "0";
+}
+
+async function close(ul){
+  ul.style.width = "max-content";
+  ul.style.opacity = "1"
+  ul.style.height = ul.scrollHeight + "px";
+  ul.style.visibility = "visible"
+}
+
+
+function dropdown(ele){
+  const image = list[ele-1].querySelector(".arrow-div")
+  console.log(image)
+
+  if(image.classList.length == 1){
+    const ul = document.createElement('ul');
+    ul.style.transition = "height 0.6s ease-in , opacity 0.6s ease-in"
+
+    for(var i  = 0 ; i < navContent[ele-1].length ; i++){
+      const li = document.createElement('li');
+      li.innerHTML = navContent[ele-1][i];
+      li.classList.add("clicked-content")
+      image.classList.add("rotate")
+      ul.appendChild(li);
+    }
+
+    list[ele-1].appendChild(ul)
+    start(ul)
+    console.log(ul.scrollHeight)
+    close(ul)
+  }
+  else{
+    const un_ol = list[ele-1].querySelector("ul")
+    start(un_ol);
+    list[ele-1].classList.remove("clicked");
+    image.classList.remove("rotate")
+    list[ele-1].removeChild(un_ol);
+  }
+}
 
 function handlelinks(){
     let btn =  document.querySelectorAll('.link-tags a');
@@ -21,7 +81,6 @@ function handlelinks(){
 function dash_link(event){
     console.log(event.target)
     handlelinks()
-//     var element = document.getElementById("myDIV");
   event.target.classList.add("active");
 }
 
@@ -29,43 +88,24 @@ function dash_link(event){
 function dash_cont(event){
     console.log(event.target)
     handlelinks()
-//     var element = document.getElementById("myDIV");
   event.target.classList.add("active");
 }
 
 function dash_user(event){
     console.log(event.target)
     handlelinks()
-//     var element = document.getElementById("myDIV");
   event.target.classList.add("active");
 }
 
 function dash_rep(event){
     console.log(event.target)
     handlelinks()
-//     var element = document.getElementById("myDIV");
   event.target.classList.add("active");
 }
 
 function dash_admin(event){
     console.log(event.target)
     handlelinks()
-//     var element = document.getElementById("myDIV");
   event.target.classList.add("active");
 }
 
-function reduceText(itemText) {
-  const maxLengthOfLink = 120 // maximum no. of characters you want your text to have
-  const itemTextArray = itemText.split(' ') // splitting the string into an array
-  let reducedFlag = -1 // using a flag to identify if we have acquired the correct length and then to add the ellipsis
-
-  return itemTextArray.reduce((accumulator, currentVal) => {
-    if (accumulator.length + currentVal.length > maxLengthOfLink) {
-      reducedFlag++
-      return reducedFlag ? accumulator : `${accumulator}...`
-    } else {
-      return `${accumulator} ${currentVal}`
-    }
-  })
-  //you can read more about the reduce function on mozilla.org
-}

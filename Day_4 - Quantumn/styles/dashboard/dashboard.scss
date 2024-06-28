@@ -22,6 +22,7 @@ nav{
     position: sticky;
     top: 0;
     z-index: 1;
+    opacity: 1;
 
     .content{
         width: 100%;
@@ -39,8 +40,15 @@ nav{
                 width: 208px;
                 height : 50px;
             }
+
+            @media screen and (max-width : 410px) {
+                img {
+                    width: 140px;
+                    padding-left: 10px;
+                }   
+            }
         }
-                
+             
         .link{
             width: 60%;
             display: flex;
@@ -52,6 +60,21 @@ nav{
                 height: 45px;
                 margin-top: 6px;
                 padding: 0 15px 0 15px;
+            }
+
+            @media screen and (max-width: 525px){
+                img{
+                    padding: 0 10px;
+                }    
+            }
+
+            @media screen and (max-width: 420px) {
+                img{
+                    width: 30px;
+                    height: 30px;
+                    padding: 0 5px;
+                    margin-top: 13px;
+                }
             }
 
             a{
@@ -84,10 +107,17 @@ nav{
                     /* display: flex; */
                     text-align: center;
                     align-items: center;
-                    right: 15px;
+                    right: 8px;
                     border-radius: 50%;
                     background-color: #2A7FF3;
                     font: 12px Quicksand;
+                }
+            }
+
+            @media screen and (max-width : 440px) {
+                .icon::after{
+                    width: 10px;
+                    width: 10px;
                 }
             }
 
@@ -130,6 +160,50 @@ nav{
                 margin-top: 10px;
             }
 
+            .menu-img{
+                width: 35px;
+                height: 35px;
+                margin-top: 12px;
+            }
+
+            @media screen and (max-width: 525px) {
+                .menu-icons{
+                    padding: 0 10px;
+                }
+
+                .menu-img{
+                    width: 28px;
+                    height: 28px;
+                    margin-top: 15px;
+                }
+            }
+
+            @media screen and (max-width: 410px) {
+                .menu-icons{
+                    padding: 0 10px;
+                    font-size: 35px;
+                }
+
+                
+                .menu-img{
+                    margin: 13px 8px 0 8px;
+                }
+            }
+        
+
+            @media screen and (max-width: 440px) {
+                .menu-icons{
+                    padding: 0 10px;
+                    font-size: 35px;
+                }
+            }
+
+            @media screen and (max-width: 420px) {
+                .menu-icons{
+                    margin-top: 10px;
+                    padding: 0 10px;
+                }
+            }
             
             .menubar{
                 display: none;
@@ -150,17 +224,26 @@ nav{
         }
     }
 
+    
+    @media screen and (min-width: 1100px) {
+        .sidebar{
+            display: none;
+        }
+    }
+
     .sidebar{
         position: absolute;
         right: 18px;
         top: 100%;
-        width: 280px;
+        // width: 280px;
         height: max-content;
         // background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
         background: #FFFFFF 0% 0% no-repeat padding-box;
         box-shadow: 0px 13px 20px #0000003D;
         border-radius: 2px;
-        opacity: 1;
+        opacity: 0;
+        width: 0px;
+        overflow: hidden;
         
         .links{
             display: flex;
@@ -169,57 +252,220 @@ nav{
             li{
                 padding: 10px 10px 25px 25px;
                 color: #1F7A54;
-                font: 16px Quicksand;
+                font: 14px Quicksand;
                 font-weight: 530;
                 text-decoration: none;
                 list-style-type: none;
                 position: relative;
                 // text-decoration: none;
 
+                
+            .arrow-div{
+                width: 6px;
+                height: 6px;
+                color: #1F7A54;
+                position: absolute;
+                top: 6px;
+                right: 30px;
+            }
+
+
+            .arrow-div::after{
+                content: "";
+                border: 2px solid #1F7A54;
+                display: inline-block;
+                transform: rotate(-135deg);
+                height: 6px;
+                width: 6px;
+                border-right: none;
+                border-bottom: none;
+                transition: transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
+
                 img{
                     position: absolute;
                     right: 10px;
-                    top: 15px;
-                    transition: opacity ease-in 0.8s;
-                }
-                &[data-states = "open"]{            
-                    opacity: 1;
-                }
-
-                &[data-state="closed"]{
+                    top: 6px;
                     opacity: 0;
-                    // visibility: hidden;
-                    // overflow-x: hidden;
+                    transition: opacity 2s ease-in;
+                    // animation-name: "fade";
+                    // animation-duration: 1s;
+
+                    &[data-states = "open"]{      
+                        // transition: opacity 2s ease-in;      
+                        opacity: 1;
+                    }
+    
+                    &[data-state="closed"]{
+                        // transition: opacity 2s ease-in;
+                        opacity: 0;
+                        display: none;
+                    }
+                }
+
+                .rotate::after{
+                    transform: rotate(45deg);
                 }
             }
 
-            .actives{
-                color: $primary-color;
-                padding-top: 20px;
+            .clicked{
+                background: #F3F3F3 0% 0% no-repeat padding-box;
+                padding-bottom: 20px;
             }
+
+            .clicked-content{
+                font: 14px Quicksand;
+                padding: 25px 10px 0px 25px;
+                font-weight: 530;
+                text-transform: uppercase;
+            }
+
+            // .arrow-div::after{
+            //     content: "";
+            //     border-left: none;
+            //     border-top: none;
+            // }
         }
 
-        &[data-state="open"]{
+        &[data-state="open"] , &[data-state="clicked"]{
             animation-name: example;
             animation-duration: 0.8s;
+            animation-fill-mode: forwards;
         }
 
         &[data-state="closed"]{
-            width: 0px;
-            visibility: hidden;
-            overflow-x: hidden;
+            animation-name: example-close;
+            animation-duration: 0.8s;
+            animation-fill-mode: forwards;
         }
 
         @keyframes example {
-            from {width: 0px;}
-            to {width: 280px;}
+            from {width: 0px;opacity: 0;}
+            to {width: 280px;opacity: 1;}
+        }
+
+        
+        @keyframes fade {
+            from {opacity: 0;}
+            to {opacity: 1;}
         }
         
         @keyframes example-close{
-            from {width: 280px;}
-            to {width: 0px;}
+            from {width: 280px;opacity: 1;}
+            to {width: 0px;opacity: 0;}
         }
     } 
+
+    .alertbox{
+        // width: 315px;
+        // height: 500px;
+        overflow: hidden;
+        // border: 1px solid red;
+        position: absolute;
+        top: 100%;
+        right: 160px;
+        background: white;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 1px 6px #0000003D;
+        border-radius: 0px 0px 2px 2px;
+        overflow: hidden;
+        height: 0px;
+        width: 0px;
+        opacity: 0;
+        transition: width 0.8s ease-in , height 0.8s ease-out , opacity 0.6s ease-in-out 0.2s;
+
+        .msg{
+            
+            width: 98%;
+            height: fit-content;
+            padding: 10px;
+            border-top: 1px solid #6E6E6E;
+            border-top: 1px solid #6E6E6E;
+
+            .alrtmsg{
+                display: flex;
+                padding: 15px 10px 10px 5px;
+                text-align: left;
+                font: 14px/18px Quicksand;
+                font-weight: 550;
+                letter-spacing: 0px;
+                color: #222222;
+                opacity: 1;
+
+                
+                .alrtimg{
+                    margin-left: auto;
+                    padding-right: 5px;
+
+                    img{
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+
+            .alrttime{
+                text-align: right;
+                font: 12px/17px Quicksand;
+                font-weight: 500;
+                letter-spacing: 0px;
+                color: #6E6E6E;
+                opacity: 1;
+                padding-right: 20px;
+            }
+        }
+
+        .alertbtn{
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            color: #1F7A54;
+            background: white;
+            border: none;
+            font: 14px/18px Quicksand;
+            font-weight: 600;
+            letter-spacing: -0.35px;
+            position: absolute;
+            bottom: 0;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            box-shadow: 0px 1px 6px #0000003D;
+            border-radius: 0px 0px 2px 2px;
+        }
+
+        &[data-alert="open"] , &[data-alert="clicked"]{
+            width: 315px;
+            height: 500px;
+            opacity: 1;
+            // animation-name: example;
+            // animation-duration: 0.8s;
+            // animation-fill-mode: forwards;
+        }
+
+        &[data-alert="closed"]{
+            width: 0px;
+            height: 0px;
+            opacity: 0;
+            // animation-name: example-close;
+            // animation-duration: 0.8s;
+            // animation-fill-mode: forwards;
+        }
+
+        @keyframes example {
+            from {width: 0px;opacity: 0;}
+            to {width: 315px;opacity: 1;}
+        }
+
+        
+        @keyframes fade {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        
+        @keyframes example-close{
+            from {width: 315px;opacity: 1;}
+            to {width: 0px;opacity: 0;}
+        }
+    }
 }
 
 /****************************** Footer CSS ************************************/
@@ -285,6 +531,63 @@ footer{
         .footer-bar{
             font-size: 30px;
         }
+
+
+        @media screen and (max-width: 525px) {
+            img {
+                width: 140px;
+                padding-right: 10px;
+            }
+        }
+        
+
+        @media screen and (max-width: 650px) {
+            .foot-text{
+                display: flex;
+                flex-direction: row;
+                text-align: center;
+                justify-content: center;
+                font-size: 12px;
+                font-weight: normal;
+            }
+        }
+    }
+
+    @media screen and (max-width: 410px) {
+        
+        .row-2{
+            height: 40px;
+            margin-top: 5px;
+            font-size: 12;
+            font-weight: normal;
+        }
+    }
+
+    @media screen and (max-width: 525px) {
+        
+        .row-1{
+            font-size: 18px;
+        }
+    }
+
+    @media screen and (max-width: 440px) {
+        
+        .row-1{
+            font-size: 17px;
+        }
+    }
+
+    @media screen and (max-width: 410px) {
+        
+        .row-1{
+            font-size: 16px;
+        }
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .footer{
+        height: 70px;
     }
 }
 
@@ -331,6 +634,18 @@ footer{
               'opsz' 48
             }
         }
+
+        @media screen and (max-width: 410px) {
+            .row-items{
+                padding: 15px;
+            }
+        }
+
+        @media screen and (max-width: 365px) {
+            .row-items{
+                padding: 10px;
+            }
+        }
         
         .active-class{
             border-bottom: 5px solid #222222;
@@ -373,11 +688,41 @@ footer{
             }
         }
 
+        @media screen and (max-width : 410px) {
+            select{
+                width: 35%;
+                font-size: 15px;
+                margin-right: 10px;
+            }
+        }
+
+        @media screen and (max-width : 525px) {
+            select{
+                width: 25%;
+            }
+        }
+
         .up-arrow{
             color: #1F7A54
         }
+
+        @media screen and (max-width : 410px) {
+            .up-arrow{
+                font-size: 25px;
+            }
+        }
     }
 
+    @media screen and (max-width : 410px) {
+        .sorting{
+            padding-right: 20px;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+    }
+
+    
+                                
     .card-text{
         text-align: left;
         font: 12px Quicksand;
@@ -386,12 +731,14 @@ footer{
         color: #666666;
         word-spacing: 2px;
         margin-top: 7px;
-
-        .card-text-numb{
-            color: #1F7A54;
-            font-weight: 1000;
-        }
     }
+
+    .card-text-numb{
+        color: #1F7A54;
+        font-weight: 1000;
+        margin-left: 5px;
+    }
+
 
     .h-line{
         color: #686868;
@@ -478,6 +825,44 @@ footer{
                             opacity: 0.4;
                         }
                     }
+
+                    .numb{
+                        color: #222222;
+                        font-weight: bolder;
+                        margin-right: 5px;
+                    }
+
+                    .unumb , .uless , .utop{
+                        margin-left : 2.5px;
+                      }
+                }
+
+                @media screen and (max-width: 525px) {
+                    .text{
+                        padding-left: 35px;
+                    }
+                }
+
+                @media screen and (max-width: 520px) {
+                    .text{
+                        padding-left: 60px;
+                    }
+                }
+
+                @media screen and (max-width: 450px) {
+                    .text{
+                        padding-left: 45px;
+                    }
+                }
+
+                @media screen and (max-width: 430px) {
+                    .text{
+                        padding-left: 75px;
+                    }
+                }
+
+                .hideult{
+                    display: none;
                 }
 
                 .prof{
@@ -491,9 +876,11 @@ footer{
                     font-weight: 600;
                     margin: 10px 0 0 0;
                     appearance: none;
-                    background: url(./Icons/arrow-down.svg);
+                    background: url("./Icons/arrow-down.svg");
                     background-repeat: no-repeat;
                     background-position: 100%;
+                }&:focus , :focus-visible{
+                    outline: none;
                 }
 
                 .stud{
@@ -507,10 +894,6 @@ footer{
 
                     .studleft{
                         margin-right: 10px;
-                    }
-
-                    .date{
-                        margin-left: 10px;
                     }
                 }
             }
@@ -537,5 +920,45 @@ footer{
                 }
             }
         }
+
+        @media screen and (max-width: 1165px) {
+            
+            .card{
+                margin-right: 0px;
+            }            
+        }
+
+        @media screen and (max-width: 420px) {
+            .card{
+                margin-right: 0px;
+            }            
+        }
+    }
+
+    @media screen and (max-width: 1165px) {
+        .cards{
+            justify-content: center;
+        }            
+    }
+
+    
+    @media screen and (max-width: 420px) {
+        .cards{
+            justify-content: center;
+        }            
     }
 }
+
+
+// @media screen and (max-width: 550px) {
+//     #header img{
+//         width: 28px;
+//         height: 28px;
+//     }
+// }
+
+
+// @media screen and (max-width: 440px) {
+           
+// }
+

@@ -25,13 +25,6 @@ nav{
     z-index: 1;
 }
 
-.wave {
-    width: auto;
-    height: 65px;
-    /* background:  */
-    opacity: 1;
-}
-
 nav > .content > .img > img{
     width: 208px;
     height : 50px;
@@ -412,7 +405,7 @@ select:focus , select:focus-visible{
     flex-direction: column;
     padding-left: 15px;
 }
-
+/* 
 .card-header{
     font: 16px Quicksand;
     font-weight: 600;
@@ -420,7 +413,7 @@ select:focus , select:focus-visible{
     color: #222222;
     opacity: 1;
     display: flex; flex-direction: row; align-items: center;
-}
+} */
 
 .card-text-numb{
     color: #1F7A54;
