@@ -1,3 +1,5 @@
+//Cards Rednering using Templates in HTML
+
 import datas from "./card-data.json" with {type: "json"}
 const data =  datas.Card
 const card = document.getElementById("card-demo");

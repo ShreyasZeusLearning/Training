@@ -1,3 +1,4 @@
+//Fetching Data;
 var data;
 var noti_data;
 fetch("./card-data.json")
@@ -11,11 +12,12 @@ fetch("./card-data.json")
     });
   });
 
+  //Dynamic Rendering using HTML string templates
 
 const alrtbox = document.querySelector(".alertbox");
 const nottbox = document.querySelector(".notbox");
 
-
+//AlertBox Listeners
 alrtbox.addEventListener("mouseover" , () => {
   console.log("over");
   if (alrtbox.dataset["alert"] != "clicked") {
@@ -55,6 +57,8 @@ function menuLeaves() {
   }
 }
 
+//AlertBox Data Rendering
+
 function render(){
 
   const messageDiv = document.getElementById("messages")
@@ -84,6 +88,8 @@ function render(){
   messageDiv.innerHTML += div;    
   }
 }
+
+//Notification Event Listeners
 
 nottbox.addEventListener("mouseover" , () => {
   console.log("over");
@@ -125,6 +131,8 @@ function notLeaves() {
   }
 }
 
+//NotificationBox Data Rendering
+
 function not_render(){
 
   const notmessageDiv = document.getElementById("not_messages")
@@ -160,11 +168,7 @@ function not_render(){
                 </div>
             </div>`
 
-  console.log(not_div)
   notmessageDiv.innerHTML += not_div;
-
-
-    console.log(not_div)
     
   }
 }

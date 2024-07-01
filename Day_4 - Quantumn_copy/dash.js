@@ -1,3 +1,4 @@
+//SideBar Rendering
 const sidebar = document.querySelector(".sidebar");
 const down_arrow = document.querySelectorAll(".menu-down");
 function SideBar() {
