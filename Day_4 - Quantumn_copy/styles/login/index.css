@@ -1,0 +1,351 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #EEEEEE 0% 0% no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: strech;
+}
+
+/************************** Navbar CSS********************************/
+nav {
+  width: auto;
+  height: 65px;
+  border: 1px solid black;
+  background: url("./../../Images/wave.png") #25313F;
+  background-size: auto;
+  background-blend-mode: overlay;
+  opacity: 0.9;
+  position: relative;
+}
+nav img {
+  position: absolute;
+  top: 6px;
+  width: 208px;
+  height: 50px;
+}
+
+/*************************** Footer CSS *******************************/
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+  bottom: 0;
+  margin-top: auto;
+  color: #E0E1E1;
+}
+footer .row-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: strech;
+  font: 14px Quicksand;
+  font-weight: 500;
+  color: #1F7A54;
+  letter-spacing: 0px;
+  opacity: 1;
+  width: 200px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+footer .row-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  background: #E0E1E1 0% 0% no-repeat padding-box;
+  flex: 1;
+}
+footer .row-2 img {
+  width: 170px;
+  height: 35px;
+}
+footer .row-2 .company {
+  font-weight: bolder;
+}
+footer .row-2 span {
+  font: 12px Quicksand;
+  font-weight: 500;
+  color: #616161;
+  letter-spacing: 0px;
+  opacity: 1;
+  margin-left: 15px;
+}
+footer .line {
+  font: 20px Quicksand;
+  font-weight: normal;
+  color: rgba(5, 5, 5, 0.1215686275);
+  letter-spacing: 0px;
+  opacity: 1;
+}
+
+/******************************* Form CSS *******************************/
+main {
+  flex: 1;
+}
+main .form {
+  width: min(100% - 6em, 488px);
+  height: -moz-min-content;
+  height: min-content;
+  padding: 2%;
+  margin: auto;
+  border-radius: 2px;
+  border-top: 5px solid #3AC7EC;
+  background-color: #fff;
+  margin-top: min(80% - 100px, 40px);
+}
+main .form .head {
+  padding-top: 4%;
+  width: 100%;
+  display: grid;
+  grid-template-areas: "i h";
+  flex-direction: row;
+}
+main .form h3 {
+  font: 24px Quicksand;
+  font-weight: 600;
+  color: #222222;
+  letter-spacing: 0px;
+  opacity: 1;
+  grid-area: h;
+}
+main .form .icon {
+  padding-left: 15%;
+  color: #1F7A54;
+  grid-area: i;
+  padding-top: 3px;
+  justify-self: flex-start;
+}
+main .form .r-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 6%;
+  padding-top: 3%;
+  height: 40px;
+  padding-right: 32px;
+}
+main .form .r-buttons .radio-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 30px;
+  flex: 0.5;
+}
+main .form .r-buttons .schoolrbtn {
+  flex: 1;
+}
+main .form input[type=radio] {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  outline: none;
+  border: 1px solid #1F7A54;
+  margin-top: 10px;
+}
+main .form input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 21% auto;
+  border-radius: 50%;
+}
+main .form input[type=radio]:checked {
+  border-color: #008000;
+}
+main .form input[type=radio]:checked:before {
+  background: #008000;
+}
+main .form .r-buttons label {
+  font: 16px Quicksand;
+  font-weight: 600;
+  color: #333333;
+  letter-spacing: 0px;
+  opacity: 1;
+  padding-top: 8px;
+  padding-left: 3%;
+}
+main .form .state {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: strech;
+  font: 12px Quicksand;
+  font-weight: 500;
+  color: #666666;
+  letter-spacing: 0px;
+  opacity: 1;
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-top: 5%;
+}
+main .form select {
+  border: none;
+  border-bottom: 1px solid #EEEEEE;
+  font: 16px/20px Quicksand;
+  font-weight: 600;
+  text-indent: 0px;
+  padding-top: 1.5%;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: url("./../../Icons/arrow-down.svg") no-repeat;
+  background-position: 100%;
+}
+main .form select:focus, main .form select:focus-visible {
+  outline: none;
+}
+main .form .username {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: strech;
+  padding-left: 6%;
+  padding-top: 7%;
+  margin-right: 6%;
+}
+main .form .pass {
+  width: 100%;
+}
+main .form .eye {
+  color: #1F7A54;
+  text-align: right;
+  transform: translateY(-30px);
+}
+main .form input[type=text], main .form input[type=password] {
+  font: 16px Quicksand;
+  font-weight: 500;
+  color: #222222;
+  letter-spacing: 0px;
+  opacity: 1;
+  border: none;
+  border-bottom: 1px solid #EEEEEE;
+}
+main .form input[type=text]::-moz-placeholder, main .form input[type=password]::-moz-placeholder {
+  font: 16px Quicksand;
+  font-weight: 500;
+  color: #666666;
+  letter-spacing: 0px;
+  opacity: 1;
+  border: none;
+  border-bottom: 1px solid #EEEEEE;
+}
+main .form input[type=text]::placeholder, main .form input[type=password]::placeholder {
+  font: 16px Quicksand;
+  font-weight: 500;
+  color: #666666;
+  letter-spacing: 0px;
+  opacity: 1;
+  border: none;
+  border-bottom: 1px solid #EEEEEE;
+}
+main .form input[type=text]:focus, main .form input[type=password]:focus {
+  outline: none;
+}
+main .form .fp {
+  font: 14px Quicksand;
+  font-weight: 580;
+  color: #1F7A54;
+  letter-spacing: 0px;
+  opacity: 1;
+  padding-top: 0.3%;
+  text-align: right;
+  text-transform: uppercase;
+}
+main .form .fp:nth-child(3) {
+  padding-top: 0;
+}
+main .form .checkbox {
+  padding-left: 6%;
+  margin-top: 2%;
+  font: 16px Quicksand;
+  font-weight: 550;
+  color: #222222;
+  letter-spacing: 0px;
+  opacity: 1;
+}
+main .form .checkbox #checkbox:checked {
+  accent-color: #1F7A54;
+  border: 10px solid #1F7A54;
+  border-color: #1F7A54;
+  color: #1F7A54;
+}
+main .form .btn {
+  font: 14px Quicksand;
+  font-weight: 500;
+  color: #1F2834;
+  letter-spacing: 0px;
+  opacity: 1;
+  width: 216px;
+  display: block;
+  border: none;
+  margin: 4% auto;
+  height: 40px;
+  background: #3FD28B 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2392156863);
+  padding: 0.5%;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 525px) {
+  .footer .row-2 {
+    font-size: 10px;
+  }
+  .footer .row-2 img {
+    width: 140px;
+    padding-right: 10px;
+  }
+  .footer .row-1 {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .footer .row-1 {
+    font-size: 15px;
+  }
+  .footer .row-2 {
+    font-size: 10px;
+  }
+  main .form .r-buttons .radio-btn {
+    margin-right: 10px;
+  }
+  main .form .r-buttons .schoolrbtn {
+    flex: 0 0 180px;
+  }
+}
+@media screen and (max-width: 410px) {
+  footer .footer {
+    height: 70px;
+  }
+  footer .footer .row-1 {
+    font-size: 16px;
+  }
+  footer .footer .row-2 {
+    font-size: 10px;
+    height: 40px;
+    margin-top: 5px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .foot-text {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+  }
+}/*# sourceMappingURL=index.css.map */
