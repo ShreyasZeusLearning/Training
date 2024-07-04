@@ -146,6 +146,9 @@ nav .content .link .menu-img {
   height: 35px;
   margin-top: 12px;
 }
+nav .content .link .brighter {
+  filter: brightness(10);
+}
 @media screen and (max-width: 525px) {
   nav .content .link .menu-icons {
     padding: 0 10px;

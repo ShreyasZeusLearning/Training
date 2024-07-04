@@ -166,6 +166,10 @@ nav{
                 margin-top: 12px;
             }
 
+            .brighter{
+                filter: brightness(10);
+            }
+
             @media screen and (max-width: 525px) {
                 .menu-icons{
                     padding: 0 10px;
@@ -665,6 +669,7 @@ nav{
             width: 315px;
             height: 582px;
             opacity: 1;
+            
             // animation-name: example;
             // animation-duration: 0.8s;
             // animation-fill-mode: forwards;
