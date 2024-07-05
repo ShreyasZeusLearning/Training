@@ -54,8 +54,19 @@
 }
 
 .canva-bg{
+  position: relative;
   width: 100%;
   height: 100vh;
   overflow: scroll;
   // resize: both;
+
+  .inputText{
+    display: none;
+    position: absolute;
+  }
+}
+
+.overlay{
+  position: absolute;
+  display: none;
 }
