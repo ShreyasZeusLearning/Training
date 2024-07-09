@@ -1,18 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const Canvas = () => {
-  const [screenWidth, setWidth] = useState(0);
   var canvasRef = useRef();
   var updateText = useRef();
+  var canvasTitleRef = useRef();
 
-  let canva, ctx, w, h;
-  var mouseEvent = false;
+  let canva, ctx , ctxTitle , canvaTitle, w, h;
   let updateCell = false;
 
   useEffect(() => {
     canva = canvasRef.current;
 
+    canvaTitle = canvasTitleRef.current;
+    canvasTitleRef.current.addEventListener("pointermove" , changeCursor);
+
     ctx = canva.getContext("2d");
+
+    ctxTitle = canvaTitle.getContext("2d");
 
     h = window.innerHeight;
 
@@ -373,11 +377,9 @@ const Canvas = () => {
       4900,
       5900,
     ],
-    
-    
   ];
 
-  const columnWidth = [135 , 185 , 135 , 135 , 135 , 135 , 135 , 235, 135 , 135 , 135 , 135 , 135 , 135];
+  var columnWidth = [135 , 185 , 135 , 135 , 135 , 135 , 135 , 235, 135 , 135 , 135 , 135 , 135 , 135];
 
 
   let lx, ly, rx, ry;
@@ -391,36 +393,51 @@ const Canvas = () => {
       ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
       ctx.restore();
 
+      ctxTitle.save();
+
+      ctxTitle.fillStyle = 'rgba(255, 255, 255, 1)';
+      ctxTitle.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+      ctxTitle.restore();
+
+      // if(LineEffect){
+      //   ctx.setLineDash([5, 3]);/*dashes are 5px and spaces are 3px*/
+      //   ctx.beginPath();
+      //   ctx.moveTo(rx,0);
+      //   ctx.lineTo(rx, 500);
+      //   ctx.stroke();
+      // }
+
       
       var x = 0;
       var width = Math.max(135, 120);
       var height = 25;
 
       for (var i = 0; i < titles.length; i++) {
-        ctx.save();
-        ctx.rect(x, 0, columnWidth[i], height);
-        ctx.clip();
-        ctx.font = "bolder 18px Quicksand";
-        ctx.fillText(titles[i], x + 2, 20);
+        ctxTitle.save();
+        ctxTitle.beginPath();
+        ctxTitle.rect(x, 0, columnWidth[i], height);
+        ctxTitle.clip();
+        ctxTitle.font = "bold 18px Quicksand";
+        ctxTitle.fillText(titles[i], x + 2, 20);
         x += columnWidth[i];
-        ctx.restore();
-        ctx.stroke();
+        ctxTitle.restore();
+        ctxTitle.stroke();
       }
 
       x = 0;
-      var y = height;
+      var y = 0;
       for (var i = 0; i < data.length; i++) {
         for (var j = 0; j < data[0].length; j++) {
           ctx.save();
           if((i >= lx && i <= rx) && ((j >= ly && j <= ry)||(ly == ry && j == ly))){
-            ctx.fillStyle = "#5ec576"
+            ctx.fillStyle = "rgba(94, 197, 118, 0.2)"
             ctx.fillRect(x, y, columnWidth[j], height);
             ctx.rect(x, y, columnWidth[j], height);
 
             ctx.clip();
 
-            ctx.fillStyle = "black";
-            ctx.font = "bold 18px Quicksand";
+            ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+            ctx.font = "600 18px Quicksand";
 
             ctx.fillText(data[i][j], x + 2, y + 20);
             
@@ -429,17 +446,17 @@ const Canvas = () => {
             ctx.stroke();
             ctx.clip();
             ctx.fillStyle = "black";
-            ctx.font = "700 18px Quicksand";
+            ctx.font = "600 18px Quicksand";
             ctx.fillText(data[i][j], x + 2, y + 20);
           }
           if(lx ==rx && ly ==ry){
             if(updateText.current != undefined && i ==lx && j == ly){
               updateText.current.value = data[i][j];
-              updateText.current.style.width = "135" + "px";
+              updateText.current.style.width = columnWidth[j] + "px";
               updateText.current.style.height = "25" + "px"
               updateText.current.style.background = "white";
               updateText.current.style.left = x + "px";
-              updateText.current.style.top = y + "px";
+              updateText.current.style.top = y + 25 + "px";
               updateText.current.style.display = "block";
               updateText.current.focus();
               updateCell = true;
@@ -462,13 +479,45 @@ const Canvas = () => {
   }
 
   function getColAndRow(lx, ly , rx , ry){
-      var rcolumn = Math.max(Math.floor(lx / 135) , 0);
-      var rrow = Math.max(Math.floor(ly / 25) - 1 , 0);
-      var lcolumn = Math.max(Math.floor(rx / 135) , 0);
+      var rcolumn = 0;
+      var rrow = Math.max(Math.floor(ly / 25) - 1, 0);
+      var lcolumn = 0;
       var lrow = Math.max(Math.floor(ry / 25) - 1 , 0);
+      // console.log(rrow , lrow)
+      var lc = lx ,rc = rx ;
+      for(var i = 0 ; i < columnWidth.length ; i++){
+        // console.log(lc , rc);
+        if(lc > 0){
+          if(lc - columnWidth[i] <= 0){
+            // console.log("lc is set" , i-1);
+            rcolumn = Math.max(i , 0);
+          }
+
+          lc -= columnWidth[i];
+        }
+        if(rc > 0){
+          if(rc - columnWidth[i]<= 0){
+            // console.log("rc is set" , i - 1);
+            lcolumn = Math.max(i , 0);
+          }
+            
+          rc -= columnWidth[i];
+        }
+
+        if(lc <= 0 && rc <= 0){
+          break;
+          // console.log("called Break for it ")
+        };
+      }
+
+      // console.log(lx , ly , rx , ry);
+
+      // console.log(rcolumn , rrow , lcolumn , lrow);
 
       return {rcolumn , rrow , lcolumn , lrow};
   }
+
+
 
   function getClickedDown(event) {
     if(event.target == updateText.current){
@@ -477,20 +526,17 @@ const Canvas = () => {
     rx = event.nativeEvent.offsetX;
     ry = Math.max(event.nativeEvent.offsetY , event.nativeEvent.clientY);
     // console.log("Event" , event , rx , ry);
-    mouseEvent = true;
     
     
     canvasRef.current.addEventListener("pointermove" ,getCord);
 
     
     function getCord(event){
-      // if(mouseEvent == true){     
-        // console.log("Inside MouseMove" + (rx , ry , lx , ly)); 
-        var rcolumn = Math.max(Math.floor(event.offsetX / 135) , 0);
-        var rrow = Math.max(Math.floor(event.offsetY / 25) - 1 , 0);
-        var lcolumn = Math.max(Math.floor(rx / 135) , 0);
-        var lrow = Math.max(Math.floor(ry / 25) - 1 , 0);
-  
+        // console.log(event.offsetY)
+        var {rrow , rcolumn , lrow , lcolumn} = getColAndRow(event.offsetX ,  Math.max(event.offsetY , event.clientY) , rx , ry);
+
+        // console.log("<MouseOver :- " + lrow , lcolumn , rrow , rcolumn)
+
         if(lcolumn > rcolumn){
           var c = lcolumn;
           lcolumn = rcolumn;
@@ -503,16 +549,14 @@ const Canvas = () => {
           lrow = rrow;
           rrow = c;
         }
-  
-        // console.log("<MouseOver :- " + (lrow , lcolumn , rrow , rcolumn))
-  
+    
         PaintCanva(rrow , rcolumn , lrow , lcolumn);
       // }
     }
 
     canvasRef.current.addEventListener("pointerup", (event) => {
       canvasRef.current.removeEventListener("pointermove", getCord);
-      console.log("Mouse Uped")
+      // console.log("Mouse Uped")
   
       if(event.target == updateText.current){
         return ;
@@ -568,7 +612,7 @@ const Canvas = () => {
           // alert('Enter is pressed!');
           // console.log(event)
           var {rrow , rcolumn , lrow , lcolumn} = getColAndRow(lx , ly , rx , ry);
-          console.log(rrow , rcolumn , lrow , lcolumn);
+          // console.log(rrow , rcolumn , lrow , lcolumn);
           // console.log(event.target.value);
           // console.log(data[rrow][rcolumn]);
           data[rrow][rcolumn] = event.target.value;
@@ -581,19 +625,95 @@ const Canvas = () => {
     });
   };
 
-  //  function PressEnter(event){
-    // console.log(event)
-    // if(event.key == 'Enter'){
-    //   // alert('Enter is pressed!');
-    // // console.log(rrow , rcolumn);
-    // console.log(event)
-    // }
+      function changeCursor(event){
+        if(event.pressure == 0){
+          let x = event.offsetX;
+          // console.log(event.offsetX)
 
-  // };
+          for(var i = 0 ; i < columnWidth.length ; i++){
+            // console.log(Math.abs(x - event.offsetX))
+            // console.log(event)
+            if(Math.abs(x - columnWidth[i]) <= 5){
+              event.target.style.cursor = "col-resize";
+              break;
+            }
+            else{
+              canvasTitleRef.current.style.cursor = "default";
+            }
+            x -= columnWidth[i];
+          }
+        }
+      }
+          // event.target.style.cursor = "col-resize";
+
+    function ChangeSizeInitial(event){
+      let x = event.nativeEvent.offsetX;
+      let lx = 0;
+      console.log(event)
+      console.log("Mouse ")
+      var i = 0;
+      for(i = 0 ; i < columnWidth.length ; i++){
+      
+        if(Math.abs(x - columnWidth[i]) <= 5){
+          console.log("Inside Mouse Down");
+          lx = event.nativeEvent.offsetX;
+          console.log(lx);
+          canvasTitleRef.current.removeEventListener("pointermove" , changeCursor);
+
+          canvasTitleRef.current.addEventListener("pointermove" , LineEffect);
+
+          canvasTitleRef.current.addEventListener("pointerup" , ChangeSizeAfter);
+          canvasTitleRef.current.addEventListener("pointerleave" , function removeListeners(event){
+            canvasTitleRef.current.removeEventListener("pointerup" , ChangeSizeAfter);
+            canvasTitleRef.current.removeEventListener("pointerleave" , removeListeners);
+            canvasTitleRef.current.removeEventListener("pointermove" , LineEffect);
+            canvasTitleRef.current.addEventListener("pointermove" , changeCursor);
+
+
+          })
+          break;
+        }
+        x -= columnWidth[i];
+      }
+
+      function LineEffect(event){
+        event.target.style.cursor = "col-resize";
+        const rx = event.offsetX;
+        console.log(rx , lx)
+        if(columnWidth[i] + rx - lx > 10)
+          columnWidth[i] += (rx - lx);
+        else  
+          columnWidth[i] = 10
+        PaintCanva();
+        console.log(columnWidth[i]);
+        lx = rx;
+      }
+
+      
+      function ChangeSizeAfter(event){
+        // console.log(i);
+        // const rx = event.offsetX;
+        // console.log(rx)
+        // if(columnWidth[i] + rx - lx > 10)
+        //   columnWidth[i] += rx - lx;
+        // else  
+        //   columnWidth[i] = 10
+        // PaintCanva()
+        // console.log(columnWidth[i]);
+        // LineEffect = false;
+        canvasTitleRef.current.removeEventListener("pointermove" , LineEffect);
+        canvasTitleRef.current.addEventListener("pointermove" , changeCursor);
+        canvasTitleRef.current.removeEventListener("pointerup" , ChangeSizeAfter);
+      }
+    }
+
+
+  
 
   return (
     <div className="canva-bg">
-      <canvas ref={canvasRef} onPointerDown={(event) => getClickedDown(event)} width="1902px" height="1000px"></canvas>
+      <canvas ref={canvasTitleRef} onPointerDown={(event) => ChangeSizeInitial(event)} className="canvaTitleBlock" width="1902px" height="25px"></canvas>
+      <canvas ref={canvasRef} onPointerDown={(event) => getClickedDown(event)} width="1902px" height="900px"></canvas>
       <input type="text" ref={updateText} name="" className="inputText" />
     </div>
   );
