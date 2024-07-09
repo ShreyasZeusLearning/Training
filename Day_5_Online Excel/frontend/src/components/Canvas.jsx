@@ -561,17 +561,8 @@ const Canvas = () => {
       if(event.target == updateText.current){
         return ;
       }
-      // console.log("MouseUp")
-      // console.log(event)
       lx = event.offsetX;
       ly = Math.max(event.offsetY , event.clientY);
-      // console.log(event.offsetX + " " + ly);
-      // console.log(rx + " " + ry);
-  
-      // var rcolumn = Math.max(Math.floor(lx / 135) , 0);
-      // var rrow = Math.max(Math.floor(ly / 25) - 1 , 0);
-      // var lcolumn = Math.max(Math.floor(rx / 135) , 0);
-      // var lrow = Math.max(Math.floor(ry / 25) - 1 , 0);
       var {rrow , rcolumn , lrow , lcolumn} = getColAndRow(lx , ly , rx , ry);
 
       // mouseEvent = false;
@@ -597,11 +588,37 @@ const Canvas = () => {
           updateText.current.style.display = "none"
       }
       else{
-        PaintCanva(rrow , rcolumn , lrow , lcolumn)
-  
-        // for (var i = lrow; i <= rrow; i++) {
-        //   console.log(data[i][rcolumn]);
-        // }
+        PaintCanva(rrow , rcolumn , lrow , lcolumn);
+        console.log(rrow - lrow)
+        if(rrow - lrow > 0){
+          const newArray = [];
+          for (var i = lrow; i <= rrow; i++) {
+            if(lcolumn == rcolumn){
+              const numb = new Number(data[i][rcolumn]).valueOf();
+              if(numb != NaN){
+                newArray.push(numb);
+              }
+              else{
+                newArray = [];
+                break;
+              }
+            }
+          }
+          
+          let sum = 0;
+          for(var i = 0 ; i < newArray.length ; i++){
+            sum += newArray[i]; 
+            console.log(newArray[i])
+          }
+
+          console.log(newArray)
+
+          let mean = sum/newArray.length;
+          let maxEle = Math.max(...newArray);
+          let minEle = Math.min(...newArray);
+          console.log(mean , maxEle , minEle)
+        }
+
       }
 
       document.body.addEventListener('keyup' , PressEnter);
