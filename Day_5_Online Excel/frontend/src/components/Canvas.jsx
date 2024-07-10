@@ -1,6 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
+import Navbar from "./Navbar";
+import { json } from "react-router-dom";
 
 const Canvas = () => {
+  const [AggData , setAggData] = useState({
+    mean : "NAN",
+    max : "NAN",
+    min : "NAN"
+  });
+  // const navigator = navigator.clipboard
   var canvasRef = useRef();
   var updateText = useRef();
   var canvasTitleRef = useRef();
@@ -385,7 +393,7 @@ const Canvas = () => {
   let lx, ly, rx, ry;
 
   function PaintCanva(rx = -1 , ry = -1, lx = -1 , ly = -1) {
-    if(canvasRef.current != undefined){
+      if(canvasRef.current != undefined){
 
       ctx.save();
 
@@ -398,16 +406,7 @@ const Canvas = () => {
       ctxTitle.fillStyle = 'rgba(255, 255, 255, 1)';
       ctxTitle.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
       ctxTitle.restore();
-
-      // if(LineEffect){
-      //   ctx.setLineDash([5, 3]);/*dashes are 5px and spaces are 3px*/
-      //   ctx.beginPath();
-      //   ctx.moveTo(rx,0);
-      //   ctx.lineTo(rx, 500);
-      //   ctx.stroke();
-      // }
-
-      
+  
       var x = 0;
       var width = Math.max(135, 120);
       var height = 25;
@@ -429,25 +428,31 @@ const Canvas = () => {
       for (var i = 0; i < data.length; i++) {
         for (var j = 0; j < data[0].length; j++) {
           ctx.save();
+          ctx.beginPath();
+
           if((i >= lx && i <= rx) && ((j >= ly && j <= ry)||(ly == ry && j == ly))){
             ctx.fillStyle = "rgba(94, 197, 118, 0.2)"
+            ctx.strokeStyle = "rgba(0, 0, 0 , 1)"
             ctx.fillRect(x, y, columnWidth[j], height);
             ctx.rect(x, y, columnWidth[j], height);
-
+            ctx.stroke();
             ctx.clip();
 
             ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
             ctx.font = "600 18px Quicksand";
-
+            var {rrow , rcolumn , lrow , lcolumn} = getColAndRow(lx , ly , rx , ry);
             ctx.fillText(data[i][j], x + 2, y + 20);
-            
+            ctx.restore();
           }else{
+            ctx.save();
             ctx.rect(x, y, columnWidth[j], height);
+            ctx.strokeStyle = "rgba(0, 0, 0 , 0.1)"
             ctx.stroke();
             ctx.clip();
             ctx.fillStyle = "black";
             ctx.font = "600 18px Quicksand";
             ctx.fillText(data[i][j], x + 2, y + 20);
+            ctx.restore();
           }
           if(lx ==rx && ly ==ry){
             if(updateText.current != undefined && i ==lx && j == ly){
@@ -470,6 +475,10 @@ const Canvas = () => {
           }
           x += columnWidth[j];
           ctx.restore();
+
+          // await new Promise((r) => {
+          //   setTimeout(r,100);
+          // })
         }
         y += height;
         x = 0;
@@ -478,11 +487,61 @@ const Canvas = () => {
     }
   }
 
+  let offset = 0;
+  let animationId = null;
+  function AntsAnimation(){
+    if(ctx != undefined){
+      console.log(ctx);
+      ctx.lineDashOffset = offset;
+      var c = Math.max(lx , rx);
+      var d = Math.min(rx , lx);
+
+      lx = d;
+      rx = c;
+
+      c = Math.max(ly , ry);
+      d = Math.min(ry , ly);
+
+      ly = d;
+      ry = c;
+      console.log(lx,ly,rx,ry);
+      var {rrow , rcolumn , lrow , lcolumn} = getColAndRow(lx , ly , rx , ry);
+
+
+      var rrpixel = 0 , lrpixel = 0 , lcpixel = 0 , rcpixel = 0;
+      // console.log(lcol , rcol)
+      for(var k = 0 ; k <= ry ; k++){
+        rrpixel += columnWidth[k];
+
+        if(k < ly)
+          lrpixel += columnWidth[k];
+      }
+      if(lx == 0)
+        lcpixel = 0;
+      else
+        lcpixel = lx * 25 + 0;
+      rcpixel = (rx+1)*25 + 0;
+
+      ctx.setLineDash([4, 6]);
+      console.log(lrpixel, lcpixel, rrpixel , rcpixel,rrpixel - lrpixel, rcpixel - lrpixel)
+      ctx.strokeRect(lrpixel, lcpixel, rrpixel - lrpixel, rcpixel - lcpixel);
+      if(offset > 6) offset = 0;
+      else offset += 1;
+    }
+    console.log(ctx);
+    animationId = window.requestAnimationFrame(() => {
+      PaintCanva();
+      AntsAnimation();
+    })
+  }
+
   function getColAndRow(lx, ly , rx , ry){
       var rcolumn = 0;
-      var rrow = Math.max(Math.floor(ly / 25) - 1, 0);
+      const navbar = (document.querySelector(".navbar").getBoundingClientRect().height);
+      const agtbox = (document.querySelector(".aggr-box").getBoundingClientRect().height);
+      var rrow = Math.max(Math.floor((ly - (navbar + agtbox))/ 25) - 1 , 0);
       var lcolumn = 0;
-      var lrow = Math.max(Math.floor(ry / 25) - 1 , 0);
+      var lrow = Math.max(Math.floor((ry - (navbar + agtbox))/ 25) - 1 , 0);
       // console.log(rrow , lrow)
       var lc = lx ,rc = rx ;
       for(var i = 0 ; i < columnWidth.length ; i++){
@@ -511,8 +570,6 @@ const Canvas = () => {
       }
 
       // console.log(lx , ly , rx , ry);
-
-      // console.log(rcolumn , rrow , lcolumn , lrow);
 
       return {rcolumn , rrow , lcolumn , lrow};
   }
@@ -588,8 +645,6 @@ const Canvas = () => {
           updateText.current.style.display = "none"
       }
       else{
-        PaintCanva(rrow , rcolumn , lrow , lcolumn);
-        console.log(rrow - lrow)
         if(rrow - lrow > 0){
           const newArray = [];
           for (var i = lrow; i <= rrow; i++) {
@@ -608,16 +663,27 @@ const Canvas = () => {
           let sum = 0;
           for(var i = 0 ; i < newArray.length ; i++){
             sum += newArray[i]; 
-            console.log(newArray[i])
           }
 
-          console.log(newArray)
-
-          let mean = sum/newArray.length;
+          let mean =  Number((sum/newArray.length).toFixed(4)).valueOf();
           let maxEle = Math.max(...newArray);
           let minEle = Math.min(...newArray);
-          console.log(mean , maxEle , minEle)
+          // maxEle === 'Infinity' ? 'NAN' : maxEle;
+          if(maxEle == "Infinity"){
+            maxEle = 'NAN';
+          }
+
+          // const jsonData = {
+          //   mean,
+          //   max : maxEle,
+          //   min : minEle
+          // };
+          // setAggData(jsonData)
+          // console.log(mean , maxEle , minEle)
         }
+
+        PaintCanva(rrow , rcolumn , lrow , lcolumn);
+
 
       }
 
@@ -641,6 +707,31 @@ const Canvas = () => {
       }
     });
   };
+
+  window.addEventListener("keydown" , (event) => {
+    var {rrow , rcolumn , lrow , lcolumn} = getColAndRow(lx , ly , rx , ry);
+
+
+    if(event.ctrlKey == true && event.code == "KeyC"){
+      let text = '';
+      console.log("Inside Copy");
+      for(var i = lrow ; i <= rrow ; i++){
+        for(var j = lcolumn ; j <= rcolumn ; j++){
+          text += data[i][j] + '\t' + '\t';
+        }
+
+        text += '\n';
+        navigator.clipboard.writeText(text);
+      }
+
+      AntsAnimation();
+    }
+
+    if(event.key == "Escape"){
+      window.cancelAnimationFrame(animationId);
+    }
+
+  })
 
       function changeCursor(event){
         if(event.pressure == 0){
@@ -728,10 +819,18 @@ const Canvas = () => {
   
 
   return (
-    <div className="canva-bg">
-      <canvas ref={canvasTitleRef} onPointerDown={(event) => ChangeSizeInitial(event)} className="canvaTitleBlock" width="1902px" height="25px"></canvas>
-      <canvas ref={canvasRef} onPointerDown={(event) => getClickedDown(event)} width="1902px" height="900px"></canvas>
-      <input type="text" ref={updateText} name="" className="inputText" />
+    <div className="mainContainer">
+      <Navbar/>
+      <div className="aggr-box">
+        <span>Mean :- {AggData.mean}</span>
+        <span>Max :- {AggData.max}</span>
+        <span>Minimum :- {AggData.min}</span>
+      </div>
+      <div className="canva-bg">
+        <canvas ref={canvasTitleRef} onPointerDown={(event) => ChangeSizeInitial(event)} className="canvaTitleBlock" width="1902px" height="25px"></canvas>
+        <canvas ref={canvasRef} onPointerDown={(event) => getClickedDown(event)} width="1902px" height="900px"></canvas>
+        <input type="text" ref={updateText} name="" className="inputText" />
+      </div>
     </div>
   );
 };

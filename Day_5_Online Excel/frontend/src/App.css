@@ -48,29 +48,119 @@
   padding-top: 1px;
 }
 
-.canva-bg {
+.mainContainer .navbar {
+  width: 100%;
+  height: 70px;
+  display: grid;
+  background: #1A5319;
+  grid-template-columns: 1fr 1fr 0.35fr;
+}
+.mainContainer .navbar ul {
+  display: grid;
+  grid-template-columns: 0.1fr 0.1fr 0.1fr 0.1fr;
+  gap: 50px;
+  padding-top: 10px;
+}
+.mainContainer .navbar ul li {
+  width: 100px;
+  height: 50px;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mainContainer .navbar ul li img {
+  width: 30px;
+  height: 30px;
+}
+.mainContainer .navbar ul li a {
+  text-decoration: none;
+  color: white;
+  padding-left: 5px;
+}
+.mainContainer .navbar ul li:hover {
+  border-bottom: 3px solid #D6EFD8;
+}
+.mainContainer .navbar .search {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 45px;
+  height: 35px;
+  margin-top: 20px;
+  background-color: #1A5319;
+  transition: 0.5s width ease-in-out, 0.5s background-color ease-in-out;
+  right: 0;
+  border-radius: 20px;
+  position: absolute;
+  right: 20px;
+}
+.mainContainer .navbar .search .srchInptbox {
+  width: 0px;
+  height: 0px;
+  border: none;
+  transition: 1s width ease-in-out;
+  border-radius: 20px;
+}
+.mainContainer .navbar .search span {
+  position: absolute;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  color: white;
+}
+.mainContainer .navbar .search:hover, .mainContainer .navbar .search:has(:focus) {
+  width: 250px;
+  background: #D6EFD8;
+  z-index: 1;
+  border-radius: 20px;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
+  transition: 0.5s width ease-in-out;
+}
+.mainContainer .navbar .search:hover span, .mainContainer .navbar .search:has(:focus) span {
+  color: #1A5319;
+}
+.mainContainer .navbar .search:hover .srchInptbox, .mainContainer .navbar .search:has(:focus) .srchInptbox {
+  width: 200px;
+  height: 32px;
+  background: #D6EFD8;
+  border: none;
+  font-size: 18px;
+  text-indent: 5px;
+}
+.mainContainer .navbar .search:hover .srchInptbox:focus, .mainContainer .navbar .search:has(:focus) .srchInptbox:focus {
+  border: none;
+  outline: none;
+}
+.mainContainer .aggr-box {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #D6EFD8;
+  align-items: center;
+}
+.mainContainer .canva-bg {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   overflow: scroll;
   font-family: Quicksand;
   font-weight: 700;
 }
-.canva-bg .canvaTitleBlock {
+.mainContainer .canva-bg .canvaTitleBlock {
   position: sticky;
   top: 0;
-  margin-top: -4px;
+  display: block;
 }
-.canva-bg .inputText {
-  display: none;
+.mainContainer .canva-bg .inputText {
   position: absolute;
+  background-color: red;
   font-weight: 500;
   font-size: 16px;
   font-family: Quicksand;
   font-weight: 600;
-}
-
-.overlay {
-  position: absolute;
-  display: none;
 }/*# sourceMappingURL=App.css.map */
