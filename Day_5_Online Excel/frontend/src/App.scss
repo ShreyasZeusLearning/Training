@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 
 *{
   margin: 0;
@@ -55,6 +56,8 @@
 
 .mainContainer{
 
+  position: relative;
+
   .navbar{
     width: 100%;
     height: 70px;
@@ -78,10 +81,11 @@
           height: 30px;
         }
 
-        a{
+        .link-tags{
           text-decoration: none;
           color: white;
           padding-left: 5px;
+          padding-right: 7px;
         }
         &:hover{
           border-bottom: 3px solid #D6EFD8;
@@ -93,6 +97,7 @@
       display: flex;
       flex-direction: row;
       position: relative;
+      align-items: center;
       width: 45px;
       height: 35px;
       margin-top: 20px;
@@ -118,6 +123,7 @@
         width: 30px;
         height: 30px;
         color: white;
+        top: 5px;
       }
 
       &:hover , &:has(:focus){
@@ -168,6 +174,7 @@
     overflow: scroll;
     font-family: Quicksand;
     font-weight: 700;
+    resize: both;
   
     .canvaTitleBlock{
       position: sticky;
@@ -177,13 +184,100 @@
     }
   
     .inputText{
-      // display: none;
+      display: none;
       position: absolute;
-      background-color: red;
+      // background-color: red;
       font-weight: 500;
       font-size: 16px;
       font-family: Quicksand;
       font-weight: 600;
+    }
+  }
+
+  .modal{
+    top: 120px;
+    left: 490px;
+    position: absolute;
+    width: 500px;
+    height: 620px;
+    border: 1px solid #e4e3e3;
+    border-radius: 5px;
+    display: none;
+    font-family: "Roboto Slab", serif;
+
+    
+    .modal-content {
+      .heading{
+        
+        display: flex;
+        
+        .close{
+          margin-left: auto;
+          font-size: 20px;
+          padding: 5px 10px 0px 0px ;
+        }
+      }
+      .row{
+        
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 20px;
+        justify-content: space-around;
+        padding: 0px 50px;
+
+
+        .iptbox{
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+
+          .lbl{
+            padding-bottom: 7px;
+            font-size: 15px;
+            color: #212529;
+          }
+
+          input{
+            width: 150px;
+            // height: 23px;
+            border: 1px solid #ced4da;
+            padding: .375rem;
+          }
+
+          .iptbox3{
+            width: 100px;
+          }
+
+          .address{
+            width: 95%;
+          }
+
+          .mailbox{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .mailspan{
+              display: flex;
+              background-color: #e9ecef;
+              border: 1px solid #ced4da;
+              padding: .375rem 10px;
+              align-items: center;
+              color: #212529;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+
+      .btn{
+        width: 85%;
+        padding: 8px;
+        margin: 0px 30px;
+        background: #1A5319;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
     }
   }
 }

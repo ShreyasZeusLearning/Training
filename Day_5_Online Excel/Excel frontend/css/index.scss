@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.main_container{
+    .canvasDiv{
+        display: grid;
+        grid-template-columns: 44px auto;
+        grid-template-rows: 44px auto;
+        resize: both;
+        overflow: scroll;
+
+        .rowHeader{
+            display: block;
+            position: sticky;
+            // top: 0;
+            left: 0;
+            outline: 1px solid red;
+        }
+
+        .colHeader{
+            position: sticky;
+            display: block;
+            top: 0;
+            left: 30px;
+            outline: 1px solid red;
+        }
+
+        .excel{
+            
+        }
+
+        .btn{
+            position: sticky;
+            left: 0;
+            top: 0;
+            z-index: 3;
+            background-color: cyan;
+        }
+    }
+}

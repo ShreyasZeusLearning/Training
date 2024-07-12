@@ -7,7 +7,7 @@ const Navbar = () => {
         <ul>
             <li><img src="./Images/home.svg" alt="" srcset="" /><a href="/">Home</a></li>
             <li><img src="./Images/upload.svg" alt="" srcset="" /> <a href="/upload">Upload</a></li>
-            <li><img src="./Images/add.svg" alt="" srcset="" /> <a href="/upload">Insert</a></li>
+            <li><img src="./Images/add.svg" alt="" srcset="" /> <a href="#">Insert</a></li>
             <li><img src="./Images/graph.svg" alt="" srcset="" /> <a href="/upload">Graphs</a></li>
         </ul>
         <div className="search">

@@ -4,9 +4,9 @@ import { json } from "react-router-dom";
 
 const Canvas = () => {
   const [AggData , setAggData] = useState({
-    mean : "NAN",
-    max : "NAN",
-    min : "NAN"
+    mean : "Na",
+    max : "Na",
+    min : "Na"
   });
   // const navigator = navigator.clipboard
   var canvasRef = useRef();
@@ -385,6 +385,342 @@ const Canvas = () => {
       4900,
       5900,
     ],
+    [
+      "user1@example.com",
+      "John Doe",
+      "USA",
+      "California",
+      "Los Angeles",
+      "+1-123-456-7890",
+      "123 Main St",
+      "Apt 101",
+      "1990-01-01",
+      1500,
+      2500,
+      3500,
+      4500,
+      5500,
+    ],
+    [
+      "user1@example.com",
+      "John Doe",
+      "USA",
+      "California",
+      "Los Angeles",
+      "+1-123-456-7890",
+      "123 Main St",
+      "Apt 101",
+      "1990-01-01",
+      1500,
+      2500,
+      3500,
+      4500,
+      5500,
+    ],
+    [
+      "user2@example.com",
+      "Jane Smith",
+      "Canada",
+      "Ontario",
+      "Toronto",
+      "+1-987-654-3210",
+      "456 Elm St",
+      "Unit 202",
+      "1985-05-15",
+      1700,
+      2700,
+      3700,
+      4700,
+      5700,
+    ],
+    [
+      "user3@example.com",
+      "Alice Johnson",
+      "UK",
+      "England",
+      "London",
+      "+44-20-1234-5678",
+      "789 Oak St",
+      "Flat 3",
+      "1982-11-30",
+      1900,
+      2900,
+      3900,
+      4900,
+      5900,
+    ],
+    [
+      "user1@example.com",
+      "John Doe",
+      "USA",
+      "California",
+      "Los Angeles",
+      "+1-123-456-7890",
+      "123 Main St",
+      "Apt 101",
+      "1990-01-01",
+      1500,
+      2500,
+      3500,
+      4500,
+      5500,
+    ],
+    [
+      "user2@example.com",
+      "Jane Smith",
+      "Canada",
+      "Ontario",
+      "Toronto",
+      "+1-987-654-3210",
+      "456 Elm St",
+      "Unit 202",
+      "1985-05-15",
+      1700,
+      2700,
+      3700,
+      4700,
+      5700,
+    ],
+    [
+      "user3@example.com",
+      "Alice Johnson",
+      "UK",
+      "England",
+      "London",
+      "+44-20-1234-5678",
+      "789 Oak St",
+      "Flat 3",
+      "1982-11-30",
+      1900,
+      2900,
+      3900,
+      4900,
+      5900,
+    ],
+    [
+      "user1@example.com",
+      "John Doe",
+      "USA",
+      "California",
+      "Los Angeles",
+      "+1-123-456-7890",
+      "123 Main St",
+      "Apt 101",
+      "1990-01-01",
+      1500,
+      2500,
+      3500,
+      4500,
+      5500,
+    ],
+    [
+      "user1@example.com",
+      "John Doe",
+      "USA",
+      "California",
+      "Los Angeles",
+      "+1-123-456-7890",
+      "123 Main St",
+      "Apt 101",
+      "1990-01-01",
+      1500,
+      2500,
+      3500,
+      4500,
+      5500,
+    ],
+    [
+      "user2@example.com",
+      "Jane Smith",
+      "Canada",
+      "Ontario",
+      "Toronto",
+      "+1-987-654-3210",
+      "456 Elm St",
+      "Unit 202",
+      "1985-05-15",
+      1700,
+      2700,
+      3700,
+      4700,
+      5700,
+    ],
+    [
+      "user3@example.com",
+      "Alice Johnson",
+      "UK",
+      "England",
+      "London",
+      "+44-20-1234-5678",
+      "789 Oak St",
+      "Flat 3",
+      "1982-11-30",
+      1900,
+      2900,
+      3900,
+      4900,
+      5900,
+    ],
+    [
+      "user1@example.com",
+      "John Doe",
+      "USA",
+      "California",
+      "Los Angeles",
+      "+1-123-456-7890",
+      "123 Main St",
+      "Apt 101",
+      "1990-01-01",
+      1500,
+      2500,
+      3500,
+      4500,
+      5500,
+    ],
+    [
+      "user2@example.com",
+      "Jane Smith",
+      "Canada",
+      "Ontario",
+      "Toronto",
+      "+1-987-654-3210",
+      "456 Elm St",
+      "Unit 202",
+      "1985-05-15",
+      1700,
+      2700,
+      3700,
+      4700,
+      5700,
+    ],
+    [
+      "user3@example.com",
+      "Alice Johnson",
+      "UK",
+      "England",
+      "London",
+      "+44-20-1234-5678",
+      "789 Oak St",
+      "Flat 3",
+      "1982-11-30",
+      1900,
+      2900,
+      3900,
+      4900,
+      5900,
+    ],
+    [
+      "user1@example.com",
+      "John Doe",
+      "USA",
+      "California",
+      "Los Angeles",
+      "+1-123-456-7890",
+      "123 Main St",
+      "Apt 101",
+      "1990-01-01",
+      1500,
+      2500,
+      3500,
+      4500,
+      5500,
+    ],
+    [
+      "user1@example.com",
+      "John Doe",
+      "USA",
+      "California",
+      "Los Angeles",
+      "+1-123-456-7890",
+      "123 Main St",
+      "Apt 101",
+      "1990-01-01",
+      1500,
+      2500,
+      3500,
+      4500,
+      5500,
+    ],
+    [
+      "user2@example.com",
+      "Jane Smith",
+      "Canada",
+      "Ontario",
+      "Toronto",
+      "+1-987-654-3210",
+      "456 Elm St",
+      "Unit 202",
+      "1985-05-15",
+      1700,
+      2700,
+      3700,
+      4700,
+      5700,
+    ],
+    [
+      "user3@example.com",
+      "Alice Johnson",
+      "UK",
+      "England",
+      "London",
+      "+44-20-1234-5678",
+      "789 Oak St",
+      "Flat 3",
+      "1982-11-30",
+      1900,
+      2900,
+      3900,
+      4900,
+      5900,
+    ],
+    [
+      "user1@example.com",
+      "John Doe",
+      "USA",
+      "California",
+      "Los Angeles",
+      "+1-123-456-7890",
+      "123 Main St",
+      "Apt 101",
+      "1990-01-01",
+      1500,
+      2500,
+      3500,
+      4500,
+      5500,
+    ],
+    [
+      "user2@example.com",
+      "Jane Smith",
+      "Canada",
+      "Ontario",
+      "Toronto",
+      "+1-987-654-3210",
+      "456 Elm St",
+      "Unit 202",
+      "1985-05-15",
+      1700,
+      2700,
+      3700,
+      4700,
+      5700,
+    ],
+    [
+      "user3@example.com",
+      "Alice Johnson",
+      "UK",
+      "England",
+      "London",
+      "+44-20-1234-5678",
+      "789 Oak St",
+      "Flat 3",
+      "1982-11-30",
+      1900,
+      2900,
+      3900,
+      4900,
+      5900,
+    ],
   ];
 
   var columnWidth = [135 , 185 , 135 , 135 , 135 , 135 , 135 , 235, 135 , 135 , 135 , 135 , 135 , 135];
@@ -393,7 +729,7 @@ const Canvas = () => {
   let lx, ly, rx, ry;
 
   function PaintCanva(rx = -1 , ry = -1, lx = -1 , ly = -1) {
-      if(canvasRef.current != undefined){
+      if(canvasRef.current != undefined && ctx != undefined){
 
       ctx.save();
 
@@ -431,7 +767,8 @@ const Canvas = () => {
           ctx.beginPath();
 
           if((i >= lx && i <= rx) && ((j >= ly && j <= ry)||(ly == ry && j == ly))){
-            ctx.fillStyle = "rgba(94, 197, 118, 0.2)"
+
+            ctx.fillStyle = "rgba(94, 197, 118, 0.5)"
             ctx.strokeStyle = "rgba(0, 0, 0 , 1)"
             ctx.fillRect(x, y, columnWidth[j], height);
             ctx.rect(x, y, columnWidth[j], height);
@@ -442,17 +779,17 @@ const Canvas = () => {
             ctx.font = "600 18px Quicksand";
             var {rrow , rcolumn , lrow , lcolumn} = getColAndRow(lx , ly , rx , ry);
             ctx.fillText(data[i][j], x + 2, y + 20);
-            ctx.restore();
+            // ctx.restore();
           }else{
-            ctx.save();
+            // ctx.save();
             ctx.rect(x, y, columnWidth[j], height);
-            ctx.strokeStyle = "rgba(0, 0, 0 , 0.1)"
+            ctx.strokeStyle = "rgba(0, 0, 0 , 0.5)"
             ctx.stroke();
             ctx.clip();
             ctx.fillStyle = "black";
             ctx.font = "600 18px Quicksand";
             ctx.fillText(data[i][j], x + 2, y + 20);
-            ctx.restore();
+            // ctx.restore();
           }
           if(lx ==rx && ly ==ry){
             if(updateText.current != undefined && i ==lx && j == ly){
@@ -491,7 +828,8 @@ const Canvas = () => {
   let animationId = null;
   function AntsAnimation(){
     if(ctx != undefined){
-      console.log(ctx);
+      ctx.save();
+      // ctx.beginPath();
       ctx.lineDashOffset = offset;
       var c = Math.max(lx , rx);
       var d = Math.min(rx , lx);
@@ -504,33 +842,35 @@ const Canvas = () => {
 
       ly = d;
       ry = c;
-      console.log(lx,ly,rx,ry);
+      // console.log(lx,ly,rx,ry);
       var {rrow , rcolumn , lrow , lcolumn} = getColAndRow(lx , ly , rx , ry);
-
+      // console.log(rrow , rcolumn , lrow , lcolumn)
 
       var rrpixel = 0 , lrpixel = 0 , lcpixel = 0 , rcpixel = 0;
       // console.log(lcol , rcol)
-      for(var k = 0 ; k <= ry ; k++){
+      for(var k = 0 ; k <= lcolumn ; k++){
         rrpixel += columnWidth[k];
 
-        if(k < ly)
+        if(k < rcolumn)
           lrpixel += columnWidth[k];
       }
-      if(lx == 0)
+      if(rrow == 0)
         lcpixel = 0;
       else
-        lcpixel = lx * 25 + 0;
-      rcpixel = (rx+1)*25 + 0;
+        lcpixel = rrow * 25 + 0;
+      rcpixel = (lrow+1)*25 + 0;
 
-      ctx.setLineDash([4, 6]);
-      console.log(lrpixel, lcpixel, rrpixel , rcpixel,rrpixel - lrpixel, rcpixel - lrpixel)
+      ctx.setLineDash([6, 4]);
+      // console.log(lrpixel, lcpixel, rrpixel , rcpixel,rrpixel - lrpixel, rcpixel - lrpixel);
+      ctx.strokeStyle = "#1A5319";
+      ctx.lineWidth = 3;
       ctx.strokeRect(lrpixel, lcpixel, rrpixel - lrpixel, rcpixel - lcpixel);
       if(offset > 6) offset = 0;
       else offset += 1;
+      ctx.restore();
     }
-    console.log(ctx);
     animationId = window.requestAnimationFrame(() => {
-      PaintCanva();
+      PaintCanva(lrow , lcolumn , rrow , rcolumn);
       AntsAnimation();
     })
   }
@@ -580,6 +920,10 @@ const Canvas = () => {
     if(event.target == updateText.current){
       return ;
     }
+
+    if(ctx.lineDashOffset != null && animationId != null)
+      window.cancelAnimationFrame(animationId);
+    
     rx = event.nativeEvent.offsetX;
     ry = Math.max(event.nativeEvent.offsetY , event.nativeEvent.clientY);
     // console.log("Event" , event , rx , ry);
@@ -729,6 +1073,7 @@ const Canvas = () => {
 
     if(event.key == "Escape"){
       window.cancelAnimationFrame(animationId);
+      PaintCanva(-1,-1,-1,-1)
     }
 
   })
@@ -820,7 +1165,19 @@ const Canvas = () => {
 
   return (
     <div className="mainContainer">
-      <Navbar/>
+      <div className='navbar'>
+        <div className=""></div>
+        <ul>
+            <li><img src="./Images/home.svg" alt="" srcset="" /><p className="link-tags" href="/">Home</p></li>
+            <li><img src="./Images/upload.svg" alt="" srcset="" /> <a className="link-tags" href="/upload">Upload</a></li>
+            <li><img src="./Images/add.svg" alt="" srcset="" /> <a  className="link-tags" href="#">Insert</a></li>
+            <li><img src="./Images/graph.svg" alt="" srcset="" /> <p className="link-tags" href="/upload">Graphs</p></li>
+        </ul>
+        <div className="search">
+            <input type="text" name="srchInptTxt" className='srchInptbox' id="" />
+            <span class="material-symbols-outlined">search</span>
+        </div>
+      </div>
       <div className="aggr-box">
         <span>Mean :- {AggData.mean}</span>
         <span>Max :- {AggData.max}</span>
@@ -828,8 +1185,96 @@ const Canvas = () => {
       </div>
       <div className="canva-bg">
         <canvas ref={canvasTitleRef} onPointerDown={(event) => ChangeSizeInitial(event)} className="canvaTitleBlock" width="1902px" height="25px"></canvas>
-        <canvas ref={canvasRef} onPointerDown={(event) => getClickedDown(event)} width="1902px" height="900px"></canvas>
+        <canvas ref={canvasRef} onPointerDown={(event) => getClickedDown(event)} width="1902px" height="300px"></canvas>
         <input type="text" ref={updateText} name="" className="inputText" />
+      </div>
+
+      <div id="myModal" className="modal">
+        <div className="modal-content">
+          <div className="heading">
+            <span className="material-symbols-outlined close">close</span>
+          </div>
+
+          <div className="row">
+            <div className="iptbox">
+              <label htmlFor="username" className="lbl">Username</label>
+              <input type="username" name="username" className="iptbox" />
+            </div>
+
+            <div className="iptbox">
+              <label htmlFor="lbl" className="lbl">Email</label>
+              <span className="mailbox"><span className="mailspan">@</span><input type="email" name="email" className="iptbox" /></span>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="iptbox">
+              <label htmlFor="contact" className="lbl">Contact Number</label>
+              <input type="number" name="contact" className="iptbox" />
+            </div>
+
+            <div className="iptbox">
+              <label htmlFor="dob" className="lbl">Date Of Birth</label>
+              <input type="date" name="dob" className="iptbox" />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="iptbox">
+              <label htmlFor="country" className="lbl">Country</label>
+              <input type="text" name="country" className="iptbox3" />
+            </div>
+
+            <div className="iptbox">
+              <label htmlFor="state" className="lbl">State</label>
+              <input type="text" name="state" className="iptbox3" />
+            </div>
+
+            <div className="iptbox">
+              <label htmlFor="city" className="lbl">City</label>
+              <input type="text" name="city" className="iptbox3" />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="iptbox">
+              <label htmlFor="addressl1" className="lbl">Address Line 1</label>
+              <input type="text" name="addressl1" className="address" />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="iptbox">
+              <label htmlFor="addressl2" className="lbl">Address Line 2</label>
+              <input type="text" name="addressl2" className="address" />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="iptbox">
+              <label htmlFor="contact" className="lbl">FY - 2019-2020</label>
+              <input type="number" name="contact" className="amtnumb" />
+            </div>
+
+            <div className="iptbox">
+              <label htmlFor="dob" className="lbl">FY - 2019-2020</label>
+              <input type="number" name="dob" className="amtnumb" />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="iptbox">
+              <label htmlFor="contact" className="lbl">FY - 2019-2020</label>
+              <input type="number" name="contact" className="amtnumb" />
+            </div>
+
+            <div className="iptbox">
+              <label htmlFor="dob" className="lbl">FY - 2019-2020</label>
+              <input type="number" name="dob" className="amtnumb" />
+            </div>
+          </div>
+          <button className="btn" type="submit">Submit</button>
+        </div>
       </div>
     </div>
   );
