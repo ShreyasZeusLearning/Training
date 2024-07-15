@@ -5,10 +5,9 @@
 
 .main_container .canvasDiv {
   display: grid;
-  grid-template-columns: 44px auto;
-  grid-template-rows: 44px auto;
-  resize: both;
-  overflow: scroll;
+  grid-template-columns: 44px calc(100% - 44px);
+  grid-template-rows: 44px calc(100% - 44px);
+  max-height: 98vh;
 }
 .main_container .canvasDiv .rowHeader {
   display: block;
@@ -22,6 +21,16 @@
   top: 0;
   left: 30px;
   outline: 1px solid red;
+}
+.main_container .canvasDiv .outer-excel {
+  resize: both;
+  overflow: scroll;
+  position: relative;
+}
+.main_container .canvasDiv .outer-excel .excel {
+  position: sticky;
+  left: 0;
+  top: 0;
 }
 .main_container .canvasDiv .btn {
   position: sticky;
