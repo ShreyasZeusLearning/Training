@@ -51,118 +51,169 @@ export class Excel {
     (event) => this.ChangeWidthAndHeight(event, divRef);
 
     this.IntilizeSize();
-    
+
     this.rowHeaderRef.width = 43;
-    this.rowHeaderRef.height = divRef.clientHeight-44;
+    this.rowHeaderRef.height = divRef.clientHeight - 44;
     this.colHeaderRef.height = 43;
     this.colHeaderRef.width = divRef.clientWidth - 44;
 
     this.outerexcelDiv.addEventListener("scrollend", () => {
-            this.IncreaseSizeofArray()
-            this.drawColHeader();
-            this.drawrowHeader();
-            this.drawExcel();
-        }
-    );
+      this.IncreaseSizeofArray();
+      this.drawColHeader();
+      this.drawrowHeader();
+      this.drawExcel();
+    });
 
     this.outerexcelDiv.addEventListener("scroll", () => {
-        this.drawColHeader();
-        this.drawrowHeader();
-        this.drawExcel();
-        }
-      );
+      this.drawColHeader();
+      this.drawrowHeader();
+      this.drawExcel();
+    });
   }
 
   IntilizeSize() {
     var size = 0;
-    for(var i = 0 ; i < this.columnWidth.length ; i++)
-        size += this.columnWidth[i];
+    for (var i = 0; i < this.columnWidth.length; i++)
+      size += this.columnWidth[i];
 
     var rowSize = 0;
-    for(var i = 0 ; i < this.rowHeight.length ; i++)
-        rowSize += this.rowHeight[i];
+    for (var i = 0; i < this.rowHeight.length; i++)
+      rowSize += this.rowHeight[i];
     this.excelDiv.style.width = size + "px";
     this.excelDiv.style.height = rowSize + "px";
     this.excelRef.width = this.divRefs.clientWidth - 18 - 44;
     this.excelRef.height = this.divRefs.clientHeight - 18 - 44;
   }
 
-  IncreaseSizeofArray(){
-    if (this.excelDiv.scrollWidth - (this.outerexcelDiv.scrollLeft + this.divRefs.clientWidth) < 275){
-        this.columnWidth = [...this.columnWidth, ...Array(50).fill(100)];
-        this.IntilizeSize();
-        this.drawColHeader();
+  IncreaseSizeofArray() {
+    if (
+      this.excelDiv.scrollWidth -
+        (this.outerexcelDiv.scrollLeft + this.divRefs.clientWidth) <
+      275
+    ) {
+      this.columnWidth = [...this.columnWidth, ...Array(50).fill(100)];
+      this.IntilizeSize();
+      this.drawColHeader();
     }
 
-    if (this.excelDiv.scrollHeight - (this.outerexcelDiv.scrollTop + this.divRefs.clientHeight) < 150){
-        this.rowHeight = [...this.rowHeight, ...Array(50).fill(40)];
-        this.IntilizeSize();
-        this.drawrowHeader();
+    if (
+      this.excelDiv.scrollHeight -
+        (this.outerexcelDiv.scrollTop + this.divRefs.clientHeight) <
+      150
+    ) {
+      this.rowHeight = [...this.rowHeight, ...Array(50).fill(40)];
+      this.IntilizeSize();
+      this.drawrowHeader();
     }
   }
 
   drawColHeader() {
     var x = 0;
     this.colHeader.setTransform(1, 0, 0, 1, 0, 0);
-    this.colHeader.clearRect(0,0,this.colHeaderRef.width, this.colHeaderRef.height)
-    this.colHeader.translate(-this.outerexcelDiv.scrollLeft,0)
+    this.colHeader.clearRect(
+      0,
+      0,
+      this.colHeaderRef.width,
+      this.colHeaderRef.height
+    );
+    this.colHeader.translate(-this.outerexcelDiv.scrollLeft, 0);
     var colCount = 0;
     for (var i = 0; i < this.columnWidth.length; i++) {
-    if(x + this.columnWidth[i] >= this.outerexcelDiv.scrollLeft && x - this.columnWidth[i] <= this.outerexcelDiv.scrollLeft + this.outerexcelDiv.clientWidth)
-        {
-            this.colHeader.save();
-            this.colHeader.beginPath();
-            this.colHeader.rect(x, 0, this.columnWidth[i], 43);
-            this.colHeader.clip();
-            this.colHeader.font = "bold 18px Quicksand";
-            this.colHeader.fillText(`Hello ${i}`, x + 2, 40);
-            this.colHeader.restore();
-            this.colHeader.stroke();
-            colCount++;
-        }
-        x += this.columnWidth[i];
+      if (
+        x - this.columnWidth[i] >
+        this.outerexcelDiv.scrollLeft + this.outerexcelDiv.clientWidth
+      )
+        break;
+      if (x + this.columnWidth[i] >= this.outerexcelDiv.scrollLeft) {
+        this.colHeader.save();
+        this.colHeader.beginPath();
+        this.colHeader.rect(x, 0, this.columnWidth[i], 43);
+        this.colHeader.clip();
+        this.colHeader.font = "bold 18px Quicksand";
+        this.colHeader.fillText(`Hello ${i}`, x + 2, 40);
+        this.colHeader.restore();
+        this.colHeader.stroke();
+        colCount++;
+      }
+      x += this.columnWidth[i];
     }
   }
 
   drawrowHeader() {
     var x = 0;
     this.rowHeader.setTransform(1, 0, 0, 1, 0, 0);
-    this.rowHeader.clearRect(0,0,this.rowHeaderRef.width, this.rowHeaderRef.height)
-    this.rowHeader.translate(0 , -this.outerexcelDiv.scrollTop)
+    this.rowHeader.clearRect(
+      0,
+      0,
+      this.rowHeaderRef.width,
+      this.rowHeaderRef.height
+    );
+    this.rowHeader.translate(0, -this.outerexcelDiv.scrollTop);
     var rowCount = 0;
     for (var i = 0; i < this.rowHeight.length; i++) {
-    if(x + this.rowHeight[i] >= this.outerexcelDiv.scrollTop && x - this.rowHeight[i] <= this.outerexcelDiv.scrollTop + this.outerexcelDiv.clientWidth)
-        {
-            this.rowHeader.save();
-            this.rowHeader.beginPath();
-            this.rowHeader.rect(0, x, 43 , this.rowHeight[i]);
-            this.rowHeader.clip();
-            this.rowHeader.font = "bold 18px Quicksand";
-            this.rowHeader.fillText(`${i}`, 0 , x + 20);
-            this.rowHeader.restore();
-            this.rowHeader.stroke();
-        }
-        x += this.rowHeight[i];
+      if (
+        x - this.rowHeight[i] >
+        this.outerexcelDiv.scrollTop + this.outerexcelDiv.clientHeight
+      )
+        break;
+
+      if (
+        x + this.rowHeight[i] >= this.outerexcelDiv.scrollTop &&
+        x - this.rowHeight[i] <=
+          this.outerexcelDiv.scrollTop + this.outerexcelDiv.clientHeight
+      ) {
+        this.rowHeader.save();
+        this.rowHeader.beginPath();
+        this.rowHeader.rect(0, x, 43, this.rowHeight[i]);
+        this.rowHeader.clip();
+        this.rowHeader.font = "bold 18px Quicksand";
+        this.rowHeader.fillText(`${i}`, 0, x + 37);
+        this.rowHeader.restore();
+        this.rowHeader.stroke();
+      }
+      x += this.rowHeight[i];
     }
   }
 
-  drawExcel(){
+  drawExcel() {
     var x = 0;
+    var y = 0;
     this.excel.setTransform(1, 0, 0, 1, 0, 0);
-    this.excel.clearRect(0,0,this.excelRef.width, this.excelRef.height)
-    this.excel.translate(-this.outerexcelDiv.scrollLeft , -this.outerexcelDiv.scrollTop)
-    for(var i = 0 ; i < this.rowHeight.length ; i++){
-        var y = 0;
-        for(var j = 0 ; j < this.columnWidth.length;j++){
+    this.excel.clearRect(0, 0, this.excelRef.width, this.excelRef.height);
+    this.excel.translate(
+      -this.outerexcelDiv.scrollLeft,
+      -this.outerexcelDiv.scrollTop
+    );
+    for (var i = 0; i < this.rowHeight.length; i++) {
+      if (
+        x + this.rowHeight[i] >= this.outerexcelDiv.scrollTop &&
+        x - this.rowHeight[i] <=
+          this.outerexcelDiv.scrollTop + this.outerexcelDiv.clientHeight
+      ) {
+        y = 0;
+        for (var j = 0; j < this.columnWidth.length; j++) {
+          if (
+            y + this.columnWidth[j] >= this.outerexcelDiv.scrollLeft &&
+            y - this.columnWidth[j] <=
+              this.outerexcelDiv.scrollLeft + this.outerexcelDiv.clientWidth
+          ) {
             this.excel.save();
             this.excel.beginPath();
-            this.excel.rect(y , x  , this.columnWidth[j] , this.rowHeight[i]);
+            var val =
+              Object.values(data[i])[j] == undefined
+                ? ""
+                : Object.values(data[i])[j];
+            this.excel.rect(y, x, this.columnWidth[j], this.rowHeight[i]);
             this.excel.clip();
+            this.excel.font = "bold 18px Quicksand";
+            this.excel.fillText(val, y + 2, x + 37);
             this.excel.stroke();
             this.excel.restore();
-            y += this.columnWidth[j];
+          }
+          y += this.columnWidth[j];
         }
-        x += this.rowHeight[i]
+      }
+      x += this.rowHeight[i];
     }
   }
 }
