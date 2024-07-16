@@ -29,10 +29,32 @@
   overflow: scroll;
   position: relative;
 }
-.main_container .canvasDiv .outer-excel .excel {
+.main_container .canvasDiv .outer-excel .inner-excel .excel {
   position: sticky;
   left: 0;
   top: 0;
+}
+.main_container .canvasDiv .outer-excel .inner-excel .inpt {
+  display: none;
+  box-sizing: border-box;
+  background: white;
+}
+.main_container .canvasDiv .outer-excel .inner-excel .inpt input {
+  border: none;
+  outline: none;
+  background: transparent;
+  box-sizing: border-box;
+}
+.main_container .canvasDiv .outer-excel .inner-excel .inpt input:focus, .main_container .canvasDiv .outer-excel .inner-excel .inpt input:focus-visible {
+  outline: none;
+  border: none;
+}
+.main_container .canvasDiv .outer-excel .inner-excel .overlayDiv {
+  display: none;
+  position: absolute;
+  border: 3px solid green;
+  background-color: rgba(94, 197, 118, 0.3);
+  box-sizing: border-box;
 }
 .main_container .canvasDiv .btn {
   position: sticky;

@@ -31,10 +31,37 @@
             resize: both;
             overflow: scroll;
             position: relative;
-            .excel{
-                position: sticky;
-                left: 0;
-                top: 0;
+            .inner-excel{
+                
+                .excel{
+                    position: sticky;
+                    left: 0;
+                    top: 0;
+                }
+
+                .inpt{
+                    display: none;
+                    box-sizing: border-box;
+                    background: white;
+                    input {
+                        border: none;
+                        outline: none;
+                        background: transparent;
+                        box-sizing: border-box;
+                        &:focus , &:focus-visible{
+                            outline: none;
+                            border: none;
+                        }
+                    }
+                }
+
+                .overlayDiv{
+                    display: none;
+                    position: absolute;
+                    border: 3px solid green;
+                    background-color: rgba(94, 197, 118 , 0.3);
+                    box-sizing: border-box;
+                }
             }
         }
 
